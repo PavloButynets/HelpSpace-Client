@@ -1,20 +1,11 @@
-import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
+import { StyledEngineProvider } from '@mui/material/styles'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-     <div className="App">
-       <header className="App-header">
-         <p>
-           <button onClick={() => setCount((count) => count + 1)}/>
-         </p>
-       </header>
-         <span>{count}</span>
-        </div>
-    </>
+      <StyledEngineProvider injectFirst>
+          <Outlet />
+      </StyledEngineProvider>
   )
 }
-
 export default App
