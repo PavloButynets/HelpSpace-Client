@@ -1,0 +1,47 @@
+{
+  "addCourseModal": {
+    "title": "Виберіть шаблон курсу",
+    "description": "Виберіть шаблон курсу з вашої бібліотеки для співпраці."
+  },
+  "publish": "Публікація: ",
+  "openAll": "Усі ресурси одразу стають доступними для попереднього перегляду та завершення для Студента після збереження.",
+  "openManually": "Доступ студента до ресурсу(ів) можна змінити в будь-який час під час процесу навчання.",
+  "datePickerLabel": "Дата відкриття",
+  "select": {
+    "openAll": "Відкрити всі",
+    "openManually": "Відкрити вручну"
+  },
+  "resourceSelection": {
+    "open": "Відкрито",
+    "openFrom": "Відкрито з",
+    "closed": "Закрито"
+  },
+  "details": "Деталі кооперації",
+  "profile": "Профіль",
+  "title": "Назва кооперації:",
+  "tutor": "Викладач:",
+  "student": "Студент:",
+  "tutoringSubject": "Предмет і рівень:",
+  "aboutCooperation": "Про співпрацю:",
+  "tutoringLanguages": "Мови:",
+  "pricing": "Ціна:",
+  "progressBar": {
+    "yourProgress": "Ваш прогрес",
+    "completed": "виконано",
+    "needToComplete": "до завершення"
+  },
+  "closingMessage1": " ініціював(-ла) процес припинення співпраці. У вас залишиться доступ до матеріалів поточної співпраці протягом ",
+  "accessDuration": "1 місяця",
+  "closingMessage2": " з моменту закриття.",
+  "acceptBtn": "Прийняти",
+  "declineBtn": "Відхилити",
+  "submitBtn": "Підтвердити",
+  "declineInputFieldPlaceholder": "Введіть причину відмови",
+  "declineInputFieldLabel": "Будь ласка, вкажіть причину відмови від закриття співпраці.",
+  "responseInputFieldPlaceholder": "Введіть коментар щодо повторного запиту",
+  "responseInputFieldLabel": "Будь ласка, вкажіть причину повторного надсилання запиту.",
+  "inputError": "Це поле є обов'язковим для заповнення.",
+  "submitMessage": "Вашу причину було успішно надіслано протилежній стороні.",
+  "cooperationCloseDeclinedMessage": "<userWrapper>{{user}}</userWrapper> відмовив(-ла) у закритті співпраці з наступної причини:",
+  "resendRequestBtn": "Надіслати повторно"
+}

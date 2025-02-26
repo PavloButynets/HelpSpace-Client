@@ -1,0 +1,41 @@
+{
+  "yourCategories": "Your teaching categories:",
+  "otherCategories": "Other categories:",
+  "yourSubjects": "Your teaching subjects:",
+  "otherSubjects": "Other subjects:",
+  "addSectionBtn": "Add Section",
+  "section": "section",
+  "sections": "sections",
+  "courseSection": {
+    "defaultNewTitle": "Section*",
+    "moduleTitle": "Module*",
+    "defaultNewDescription": "Description...*",
+    "addResourceBtn": "Add Resource",
+    "resourcesMenu": {
+      "lessonMenuItem": "Lesson",
+      "quizMenuItem": "Quiz",
+      "attachmentMenuItem": "Attachment"
+    },
+    "sectionMenu": {
+      "deleteSection": "Delete"
+    },
+    "resourceCount":{
+      "lesson_one": "{{count}} lesson",
+      "lesson_few": "{{count}} lessons",
+      "lesson_many": "{{count}} lessons",
+      "lesson_other": "{{count}} lessons",
+      "quiz_one": "{{count}} quiz",
+      "quiz_few": "{{count}} quizzes",
+      "quiz_many": "{{count}} quizzes",
+      "quiz_other": "{{count}} quizzes",
+      "attachment_one": "{{count}} attachment",
+      "attachment_few": "{{count}} attachments",
+      "attachment_many": "{{count}} attachments",
+      "attachment_other": "{{count}} attachments"
+    }
+  },
+  "errorMessages": {
+    "title": "Please provide a title",
+    "description": "Please provide a description"
+  }
+}

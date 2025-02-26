@@ -18,9 +18,12 @@ const NavigationIcon: FC<NavigationIconProps> = ({
   buttonProps,
   badgeContent = 0
 }) => {
+  const { loading, ...restButtonProps } = buttonProps;
+  const safeLoading = loading === null ? undefined : loading;
+
   return (
     <Tooltip arrow title={tooltip}>
-      <IconButton {...buttonProps}>
+      <IconButton {...restButtonProps} loading={safeLoading}>
         <Badge badgeContent={badgeContent} color={'error'}>
           {icon}
         </Badge>

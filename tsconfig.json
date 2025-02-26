@@ -22,8 +22,6 @@
       "~scss-components/*": ["./design-system/components/*"]
     }
   },
-  "include": ["src",
-    "node_modules/vite-plugin-eslint/dist/**/*.ts"
-  ],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

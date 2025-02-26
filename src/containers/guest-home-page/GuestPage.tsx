@@ -10,8 +10,6 @@ import { guestRoutes } from '~/router/constants/guestRoutes'
 import learnImg from '~/assets/img/guest-home-page/learnImg.png'
 import teachImg from '~/assets/img/guest-home-page/teachImg.png'
 
-import { styles } from '~/containers/guest-home-page/styles/WhatCanYouDo.styles'
-
 const cardData = [
   {
     img: learnImg,
@@ -46,15 +44,8 @@ const GuestPage = () => {
   ))
 
   return (
-    <Box id={guestRoutes.navBar.whatCanYouDo.route}>
-      <TitleWithDescription
-        description={t('guestHomePage.whatCanYouDo.description')}
-        style={styles.titleWithDescription}
-        title={t('guestHomePage.whatCanYouDo.title')}
-      />
-
-      <Box sx={styles.cards}>{cards}</Box>
-    </Box>
+   <>
+   </>
   )
 }
 

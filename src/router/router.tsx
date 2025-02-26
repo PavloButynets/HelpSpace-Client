@@ -14,19 +14,24 @@ import { guestRoutes } from '~/router/constants/guestRoutes'
 
 import { home } from '~/router/constants/crumbs'
 import {guestRouter} from "~/router/routes/guestRouter";
+import {authRoutes} from "~/router/constants/authRoutes";
 
 const HomeRoute = lazy(() => import('~/router/helpers/HomeRoute'))
+const Logout = lazy(() => import('~/pages/logout/Logout'))
 
 export const routerConfig = (
     <Route
         element={<App />}
         path={guestRoutes.home.route}
     >
-        <Route element={<AppContent />} handle={{ crumb: home }}>
-            <Route element={<HomeRoute />} index />
+        <Route element={<AppContent />} >
             {guestRouter}
+            <Route element={<HomeRoute />} path={guestRoutes.welcome.route} />
+
             {/*authRouter*/}
         </Route>
+        <Route element={<Logout/>} path={authRoutes.accountMenu.logout.route}/>
+
     </Route>
 )
 

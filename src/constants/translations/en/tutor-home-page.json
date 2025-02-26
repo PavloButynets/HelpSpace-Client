@@ -1,0 +1,43 @@
+{
+  "findStudentBlock": {
+    "title": {
+      "tutor": "A Global Network of Students"
+    },
+    "description": {
+      "tutor": "A Space2Study platform is the best place where you can teach.\nType who or what would you like to teach and find students for that."
+    },
+    "label": "Who or what do you want to teach?",
+    "button": "Find student"
+  },
+  "popularCategories": {
+    "title": "Popular Categories",
+    "description": "Explore tutoring categories you're passionate about.",
+    "viewMore": "View more"
+  },
+  "schedule": {
+    "title": "Your schedule",
+    "subTitle": "Upcoming classes",
+    "allClasses": "All scheduled classes"
+  },
+  "studentsInCategories": {
+    "title": "Students in Your Categories",
+    "subTitle": "Statistics of your students quantity during the last time.",
+    "resetButton": "Clear all",
+    "select": {
+      "category": "Category",
+      "year": "Year"
+    },
+    "allStudents": "All students"
+  },
+
+  "lessonsQuantity": {
+    "title": "Your Lessons Quantity",
+    "subTitle": "Statistics of your lessons with students during the last time.",
+    "select": {
+      "category": "Category",
+      "subject": "Subject",
+      "year": "Year"
+    },
+    "resetButton": "Clear all"
+  }
+}

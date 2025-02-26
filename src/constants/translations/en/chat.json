@@ -1,0 +1,60 @@
+{
+  "message": {
+    "you": "You",
+    "noMessages": "No messages yet",
+    "isTyping": "is typing..."
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline"
+  },
+  "noContacts": "No contacts found",
+  "sidebar": {
+    "about": "About",
+    "viewButton": "View Profile",
+    "noSummary": "User has no professional summary",
+    "noMedia": "There are no media here yet!",
+    "noFiles": "There are no files here yet!",
+    "noLinks": "There are no links here yet!",
+    "unknownName": "Unknown name",
+    "media": "Media",
+    "files": "Files",
+    "links": "Links",
+    "seeAll": "See all",
+    "modal": {
+      "all": "All"
+    },
+    "megabytes": "MB"
+  },
+  "chat": {
+    "inputLabel": "Type a message...",
+    "chipLabel": "Select a chat, to start messaging",
+    "loading": "Loading...",
+    "sendingMessage": "Sending...",
+    "interlocutor": "Your interlocutor"
+  },
+  "chatMenu": {
+    "deleteChat": "Delete chat",
+    "markingAsDeletedTitle": "Mark chat as deleted?",
+    "markingAsDeletedWarning": "This operation will delete chat only for you. Your interlocutor will still have access to this chat. Are you sure?",
+    "fullDeleteTitle": "Confirm chat deletion",
+    "fullDeleteWarning": "This operation is irreversible and your chat will be deleted completely and permanently!",
+    "deleteSuccess": "Your chat was deleted successfully!",
+    "clearHistory": "Clear history",
+    "clearHistoryTitle": "Do you want to clear your chat history?",
+    "clearHistoryWarning": "Your interlocutor will still have access to all old messages. Are you sure?",
+    "historyClearSuccess": "Chat history cleared successfully!"
+  },
+  "youCanAsk": "You can ask:",
+  "firstQuestion": {
+    "teachMethod": "What’s your teaching method?",
+    "trialLesson": "Do you have a trial lesson?",
+    "tutoringSession": "How long is each tutoring session?",
+    "motivation": "What is your motivation?",
+    "availability": "What time are you available?",
+    "studyCommitment": "How much time are you willing to devote to studying?"
+  },
+  "creating": "Creating new chat for you, please wait...",
+  "deleted": "Chat was deleted",
+  "deletedChip": "{{userName}} deleted this chat, and now it is read-only"
+}

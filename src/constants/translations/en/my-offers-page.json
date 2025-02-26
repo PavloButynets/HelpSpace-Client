@@ -1,0 +1,27 @@
+{
+  "title": {
+    "student": "My Requests",
+    "tutor": "My Offers"
+  },
+  "tabs": {
+    "all": "All",
+    "active": "Active",
+    "draft": "Draft",
+    "closed": "Closed"
+  },
+  "tableHeaders": {
+    "title": "Title",
+    "subject": "Subject",
+    "price": "Price",
+    "updated": "Last update",
+    "status": "Status"
+  },
+  "buttonLabel": {
+    "student": "Create new request",
+    "tutor": "Create new offer"
+  },
+  "editButton": {
+    "tutor": "Edit offer",
+    "student": "Edit request"
+  }
+}

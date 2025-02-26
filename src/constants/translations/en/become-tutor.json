@@ -1,0 +1,34 @@
+{
+  "generalInfo": {
+    "title": "Please complete the registration form for the best possible experience.",
+    "textFieldLabel": "Describe in short your professional status",
+    "helperText": "Inputs with the * sign are required"
+  },
+  "experience": {
+    "title": "Describe your professional experience. Maximum 70 characters.",
+    "textFieldLabel": "Text here..."
+  },
+  "languages": {
+    "title": "Please select the language in which you would like to study and cooperate.",
+    "autocompleteLabel": "Your native language"
+  },
+  "categories": {
+    "title": "Please choose the main subjects based on the category. You can add others later.",
+    "mainSubjectsLabel": "Main Study Category",
+    "subjectLabel": "Subject",
+    "btnText": "Add subject",
+    "emptyFields": "All fields must be filled",
+    "sameSubject": "You have the same subject"
+  },
+  "photo": {
+    "imageAlt": "Your photo",
+    "button": "Upload your profile photo",
+    "placeholder": "Photo Preview",
+    "description": "Please upload a photo that represents you and helps others recognize you.",
+    "typeError": "Wrong file type. Only .png/.jpg/.jpeg files are allowed.",
+    "fileSizeError": "Size for one file cannot be more than 5 MB.",
+    "quantityError": "Maximum allowed to add 1 photo",
+    "resizeImage": "Failed to resize image. Please try again."
+  },
+  "successMessage": "Success! Your data were added."
+}

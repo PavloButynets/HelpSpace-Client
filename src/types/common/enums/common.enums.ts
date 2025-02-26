@@ -7,7 +7,11 @@ export enum LanguagesEnum {
     Spanish = 'Spanish',
     Arabic = 'Arabic'
 }
-
+export enum UserRoleEnum {
+    User = 'user',
+    Admin = 'admin',
+    Moderator = 'moderator',
+}
 export enum SizeEnum {
     Small = 'small',
     Medium = 'medium',

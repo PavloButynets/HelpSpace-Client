@@ -1,0 +1,12 @@
+{
+  "labels": {
+    "title": "Untitled",
+    "description": "Description...",
+    "attachments": "Attachments"
+  },
+  "successAddedLesson": "Lesson was successfully created",
+  "successEditedLesson": "Lesson was successfully edited",
+  "content": "Content",
+  "attachments": "Attachments",
+  "fileEditorPlaceholder": "Create your file here..."
+}

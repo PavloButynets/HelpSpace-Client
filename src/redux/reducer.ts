@@ -67,15 +67,14 @@ export const mainSlice = createSlice({
     setUser(state, action: PayloadAction<string>) {
       const userData: AccessToken = parseJwt(action.payload)
       state.userId = userData.id
-      state.userRole = userData.role
       state.isFirstLogin = userData.isFirstLogin
-      state.userStatus = userData.status
+      state.userRole = userData.role
     },
     logout(state) {
       state.userId = initialState.userId
-      state.userRole = initialState.userRole
       state.isFirstLogin = initialState.isFirstLogin
       state.userStatus = initialState.userStatus
+      state.userRole = initialState.userRole
     },
     markFirstLoginComplete(state) {
       state.isFirstLogin = false

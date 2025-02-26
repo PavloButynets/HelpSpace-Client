@@ -27,9 +27,11 @@ interface ModalProviderProps {
   children: ReactElement
 }
 
-const ModalContext = createContext<ModalProvideContext>(
-  {} as ModalProvideContext
-)
+const ModalContext = createContext<ModalProvideContext>({
+  openModal: () => { console.warn('openModal is not initialized') },
+  closeModal: () => { console.warn('closeModal is not initialized') }
+})
+
 
 const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
   const [modal, setModal] = useState<ReactElement | null>(null)

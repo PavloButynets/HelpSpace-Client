@@ -1,0 +1,8 @@
+{
+  "title": "Bookmarks",
+  "search": "Search for offer or request",
+  "notFound": {
+    "description": "We couldn’t find any bookmarks."
+  },
+  "loadingError": "Couldn’t load offers data"
+}

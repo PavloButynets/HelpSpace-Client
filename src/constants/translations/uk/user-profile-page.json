@@ -1,0 +1,60 @@
+{
+  "profileInfo": {
+    "copyProfileLink": "Посилання на профіль скопійовано",
+    "showMore": "Показати більше...",
+    "tutorOffers": "Пропозиції викладача",
+    "studentRequests": "Пропозиції студента",
+    "sendMessage": "Надіслати повідомлення",
+    "withS2S": "з space2study",
+    "reviews": "відгуків",
+    "nativeLanguage": "Рідна мова: ",
+    "location": "Родом із",
+    "timeForYear_one": "{{count}} рік",
+    "timeForYear_few": "{{count}} роки",
+    "timeForYear_many": "{{count}} років",
+    "timeForMonth_one": "{{count}} місяць",
+    "timeForMonth_few": "{{count}} місяці",
+    "timeForMonth_many": "{{count}} місяців",
+    "timeForWeek_one": "{{count}} тиждень",
+    "timeForWeek_few": "{{count}} тижні",
+    "timeForWeek_many": "{{count}} тижнів",
+    "timeForDay_one": "{{count}} день",
+    "timeForDay_few": "{{count}} дні",
+    "timeForDay_many": "{{count}} днів"
+  },
+  "videoPresentation": {
+    "title": "Відео Презентація"
+  },
+  "tutorAbout": {
+    "title": "Про репетитора",
+    "education": "Освіта",
+    "workExperience": "Досвід роботи",
+    "scientificActivities": "Наукова діяльність",
+    "awards": "Нагороди"
+  },
+  "studentAbout": {
+    "title": "Про студента",
+    "personalIntroduction": "Особисте представлення",
+    "learningGoals": "Навчальні цілі",
+    "learningActivities": "Навчальні активності"
+  },
+  "reviews": {
+    "titleTutor": "Що говорять студенти",
+    "titleStudent": "Що говорять викладачі",
+    "buttonTitle": "Більше відгуків",
+    "starsCount_zero": "{{count}} зірок",
+    "starsCount_one": "{{count}} зірка",
+    "starsCount_few": "{{count}} зірки",
+    "starsCount_many": "{{count}} зірок",
+    "reviewsCount_zero": "{{count}} відгуків",
+    "reviewsCount_one": "{{count}} відгук",
+    "reviewsCount_few": "{{count}} відгуки",
+    "reviewsCount_many": "{{count}} відгуків"
+  },
+  "sortItems": {
+    "Newest": "Нові",
+    "Relevant": "Актуальні",
+    "highestRating": "Найвищий рейтинг",
+    "lowestRating": "Найнижчий рейтинг"
+  }
+}

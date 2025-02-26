@@ -22,14 +22,12 @@ const compat = new FlatCompat({
 export default [
     ...pluginQuery.configs['flat/recommended'],
     {
-        ignores: ['src/assets/*', 'src/stories/assets/*', '.storybook/**/*']
+        ignores: ['src/assets/*']
     },
     ...compat.extends(
         'eslint:recommended',
         'plugin:prettier/recommended',
         'plugin:react/recommended',
-        'plugin:storybook/recommended',
-        'plugin:vitest-globals/recommended'
     ),
     {
         plugins: {
@@ -132,18 +130,4 @@ export default [
             ]
         }
     },
-    {
-        files: ['**/tests/**/*.*.js', '**/tests/**/*.js'],
-        languageOptions: {
-            globals: {
-                ...globals.jest
-            }
-        }
-    },
-    {
-        files: ['**/*.stories.*'],
-        rules: {
-            'import/no-anonymous-default-export': 'off'
-        }
-    }
 ]

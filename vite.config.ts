@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgrPlugin from 'vite-plugin-svgr'
 import tsconfigPaths from 'vite-tsconfig-paths'
-
+import checker from 'vite-plugin-checker';
 
 import path from 'path'
 
@@ -11,6 +11,9 @@ export default defineConfig({
     react(),
     svgrPlugin(),
     tsconfigPaths(),
+    checker({
+      typescript: true,
+    }),
   ],
   server: {
     port: 3000,
@@ -41,7 +44,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '~': path.resolve(__dirname, 'src/'),
-      '~tests': path.resolve(__dirname, 'tests/'),
       '~scss': path.resolve(__dirname, 'src/design-system/scss/'),
       '~scss-components': path.resolve(
           __dirname,

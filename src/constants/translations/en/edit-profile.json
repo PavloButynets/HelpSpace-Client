@@ -1,0 +1,109 @@
+{
+  "title": "Account Settings",
+  "description": "Manage your account settings and preferences",
+  "updateBtn": "Update",
+  "profile": {
+    "title": "Profile",
+    "description": "Here you can edit public information about yourself.",
+    "updateProfileBtn": "Update",
+    "successMessage": "Success! Your data has been updated.",
+    "generalTab": {
+      "tabTitle": "Profile",
+      "uploadTitle": "Upload new photo",
+      "uploadDesc": "Maximum file size - 5 Mb",
+      "informationTitle": "Personal information",
+      "informationDesc": "Your name may appear around Space2Study when mentioned.",
+      "locationTitle": "Location",
+      "locationDesc": "Let members know where you are based.",
+      "professionalHeadline": "Professional headline",
+      "professionalStatus": "Describe in short your professional summary. Maximum 200 characters.",
+      "languagesTitle": "Language",
+      "languagesDesc": "Select the language in which you would like to study and cooperate.",
+      "videoPresentationDesc": "Add the link to your presentational video. Your video needs to be public and uploaded to YouTube.",
+      "errorTooltip": "There is a problem with your changes"
+    },
+    "professionalTab": {
+      "tabTitle": "Professional info",
+      "mainTitle": "Professional information",
+      "mainDescription": "Here you can edit public professional information about yourself.",
+      "categoriesTitle": "Your professional categories",
+      "categoriesDescription": {
+        "tutor": "State your professional field you want to work in with your students.\nChoose at least one study category and one subject.",
+        "student": "State the category you want to study.\nChoose at least one study category and one subject."
+      },
+      "addCategoryBtn": "Add category",
+      "addCategoryModal": {
+        "title": "Your professional category",
+        "description": "Choose your professional field you want to work in with your students.",
+        "addSubjectBtn": "Add one more subject",
+        "submitBtn": "Save changes",
+        "discardBtn": "Discard"
+      },
+      "deleteCategoryModal": {
+        "title": "Delete this category?",
+        "description": "If you delete the category you will lose your progress.\nOnce removed, this action cannot be undone.",
+        "cancelBtn": "Cancel",
+        "submitBtn": "Delete"
+      },
+      "mainStudyCategory": "Main study category",
+      "subject": "The category subject(s)",
+      "proficiencyLevels": "Proficiency Levels",
+      "editCategoryBtn": "Edit category",
+      "deleteCategoryBtnDisabledTooltip": "You have opened cooperation(s)/offers with this category.\nPlease close it before deactivation",
+      "tutorAboutTitle": "About the tutor",
+      "tutorAboutDescription": "Describe your professional experience. This information will be displayed on your public profile.",
+      "studentAboutTitle": "About the student",
+      "studentAboutDescription": "Describe yourself and your learning experiance. This information will be displayed on your public profile.",
+      "accordionTutor": {
+        "education": "Education",
+        "workExperience": "Work experience",
+        "scientificActivities": "Scientific activities",
+        "awards": "Awards",
+        "textareaLabel": "Text here"
+      },
+      "accordionStudent": {
+        "personalIntroduction": "Personal Introduction",
+        "learningGoals": "Learning Goals",
+        "learningActivities": "Learning Activities",
+        "textareaLabel": "Text here"
+      }
+    },
+    "notificationsTab": {
+      "tabTitle": "Notifications",
+      "notifications": "Notifications",
+      "mainHint": "Choose what emails you'd like to be sent",
+      "offerStatus": "Change of offer status",
+      "offerSubtitle": "You will be notified when an offer changes status",
+      "chat": "Chat message",
+      "chatSubtitle": "You will be notified when you have any new messages in chat",
+      "similarOffers": "Subscription to offers",
+      "similarOffersSubtitle": "You will be notified when someone creates a new similar offer",
+      "email": "Email notification",
+      "emailSubtitle": "Turn on email notification to get updates through email"
+    },
+    "passwordSecurityTab": {
+      "tabTitle": "Password & Security",
+      "title": "Password & Security",
+      "subTitle": "You can change your password using the current one.",
+      "description": "Change password and security settings",
+      "changePassword": "Change password",
+      "changePasswordModalDescription": "Reset your current password to new one.",
+      "changePasswordConfirm": "Are you sure you want to change the password?",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "retypePassword": "Re-type new password",
+      "savePassword": "Save the password",
+      "deactivateAccount": "Deactivate account",
+      "deactivateBtn": "Deactivate",
+      "deactivateTitle": "Deactivate your account",
+      "deactivateSubTitle": "Deactivate and delete your account.",
+      "deactivateDescription": "If you deactivate your account it will be hidden on this site. You can activate your account anytime.",
+      "activateAccount": "Activate account",
+      "activateBtn": "Activate",
+      "activateTitle": "Activate your account?",
+      "activateDescription": "If you activate your account it will be shown on this site. You can deactivate your account anytime.",
+      "deactivatedAccountTitle": "Your account is deactivated",
+      "deactivatedAccountDescription": "Your account is hidden on this site. This means you cannot provide any professional activity until you activate your account."
+    }
+  }
+}
