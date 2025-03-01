@@ -1,15 +1,15 @@
-import { FC, useMemo } from 'react'
-import Typography from '@mui/material/Typography'
-import TextField, { TextFieldProps } from '@mui/material/TextField'
-import Tooltip from '@mui/material/Tooltip'
+import { FC, useMemo } from "react";
+import Typography from "@mui/material/Typography";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
 
-import { styles } from '~/components/app-text-field/AppTextField.styles'
-import { TypographyVariantEnum } from '~/types'
+import { styles } from "~/components/app-text-field/AppTextField.styles";
+import { TypographyVariantEnum } from "~/types";
 
 interface AppTextFieldProps
-  extends Omit<TextFieldProps, 'error' | 'helperText'> {
-  errorMsg?: string
-  withHelperText?: boolean
+  extends Omit<TextFieldProps, "error" | "helperText"> {
+  errorMsg?: string;
+  withHelperText?: boolean;
 }
 
 const AppTextField: FC<AppTextFieldProps> = ({
@@ -25,18 +25,18 @@ const AppTextField: FC<AppTextFieldProps> = ({
           {errorMsg}
         </Typography>
       </Tooltip>
-    ) : null
-  }, [errorMsg])
+    ) : null;
+  }, [errorMsg]);
 
   return (
     <TextField
       FormHelperTextProps={{ sx: styles.helperText(multiline) }}
       error={Boolean(errorMsg)}
-      helperText={withHelperText ? helperText : ' '}
+      helperText={withHelperText ? helperText : " "}
       multiline={multiline}
       {...props}
     />
-  )
-}
+  );
+};
 
-export default AppTextField
+export default AppTextField;

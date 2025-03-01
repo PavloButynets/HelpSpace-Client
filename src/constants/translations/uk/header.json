@@ -4,32 +4,19 @@
   "who-we-are": "Про нас",
   "findOffers": "Знайти пропозицію",
   "allOffers": "Всі пропозиції",
-  "subjects": "Предмети",
   "categories": "Категорії",
   "homePage": "Домашня сторінка",
-  "cooperations": "Співпраці",
-  "findTutor": "Знайти викладача",
-  "findStudent": "Знайти студента",
   "faq": "Поширені питання",
-  "becomeTutor": "Стати викладачем",
   "loginButton": "Увійти",
   "my-profile": "Мій профіль",
-  "bookmarked-offers": "Закладки",
-  "my-cooperations": "Мої співпраці",
-  "my-courses": "Мої курси",
   "my-offers": "Мої пропозиції",
   "my-requests": "Мої запити",
   "my-resources": "Мої ресурси",
   "logout": "Вийти",
   "notifications": {
     "emptyNotifications": "Немає сповіщень",
-    "clearAll": "Очистити всі",
-    "messages": {
-      "NEW_COOPERATION": "У вас нова співпраця",
-      "NEW_COMMENT": "Ви отримали новий відгук",
-      "UPDATE_COOPERATION": "Вашу співпрацю оновлено",
-      "ACCEPT_COOPERATION": "Вашу співпрацю прийнято",
-      "CANCEL_COOPERATION": "Вашу співпрацю відхилено"
-    }
-  }
+    "clearAll": "Очистити всі"
+  },
+  "volunteer-events": "Волонтерити",
+  "need-help": "Потрібна допомога ?"
 }

@@ -1,22 +1,22 @@
-import { FC, ReactElement } from 'react'
-import { type IconButtonProps } from '@mui/material/IconButton'
-import Tooltip from '@mui/material/Tooltip'
-import Badge from '@mui/material/Badge'
+import { FC, ReactElement } from "react";
+import { type IconButtonProps } from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import Badge from "@mui/material/Badge";
 
-import { IconButton } from '~/design-system/components/icon-button/IconButton'
+import { IconButton } from "~/design-system/components/icon-button/IconButton";
 
 interface NavigationIconProps {
-  tooltip: string
-  icon: ReactElement
-  buttonProps: Omit<IconButtonProps, 'size'>
-  badgeContent?: number
+  tooltip: string;
+  icon: ReactElement;
+  buttonProps: Omit<IconButtonProps, "size">;
+  badgeContent?: number;
 }
 
 const NavigationIcon: FC<NavigationIconProps> = ({
   tooltip,
   icon,
   buttonProps,
-  badgeContent = 0
+  badgeContent = 0,
 }) => {
   const { loading, ...restButtonProps } = buttonProps;
   const safeLoading = loading === null ? undefined : loading;
@@ -24,12 +24,13 @@ const NavigationIcon: FC<NavigationIconProps> = ({
   return (
     <Tooltip arrow title={tooltip}>
       <IconButton {...restButtonProps} loading={safeLoading}>
-        <Badge badgeContent={badgeContent} color={'error'}>
+        <Badge
+badgeContent={badgeContent} color={"error"}>
           {icon}
         </Badge>
       </IconButton>
     </Tooltip>
-  )
-}
+  );
+};
 
-export default NavigationIcon
+export default NavigationIcon;

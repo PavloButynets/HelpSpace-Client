@@ -1,18 +1,18 @@
-import { FC, useLayoutEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { FC, useLayoutEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 interface ScrollToTopProps {
-  element: React.RefObject<HTMLDivElement>
+  element: React.RefObject<HTMLDivElement>;
 }
 
 const ScrollToTop: FC<ScrollToTopProps> = ({ element }) => {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
 
   useLayoutEffect(() => {
-    element.current?.scrollTo(0, 0)
-  }, [element, pathname])
+    element.current?.scrollTo(0, 0);
+  }, [element, pathname]);
 
-  return null
-}
+  return null;
+};
 
-export default ScrollToTop
+export default ScrollToTop;

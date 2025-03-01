@@ -1,8 +1,7 @@
-import GuestHomePage from '~/pages/guest-home-page/GuestHome'
+import GuestHomePage from "~/pages/guest-home/GuestHome";
 
 const HomeRoute = () => {
+  return <h1 style={{ margin: "110px" }}>Guest Home Page</h1>;
+};
 
-  return <h1 style={{ margin: '110px' }}>Guest Home Page</h1>
-}
-
-export default HomeRoute
+export default HomeRoute;

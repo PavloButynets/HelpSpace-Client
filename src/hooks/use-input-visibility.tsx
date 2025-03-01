@@ -1,20 +1,20 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
-import InputAdornment from '@mui/material/InputAdornment'
-import { IconButton } from '~/design-system/components/icon-button/IconButton'
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import InputAdornment from "@mui/material/InputAdornment";
+import { IconButton } from "~/design-system/components/icon-button/IconButton";
 
 const useInputVisibility = (inputError: string) => {
-  const [showInputText, setShowInputText] = useState(false)
+  const [showInputText, setShowInputText] = useState(false);
 
-  const iconColor = inputError ? 'error' : 'secondary'
+  const iconColor = inputError ? "error" : "secondary";
 
   const inputVisibility = {
     endAdornment: (
-      <InputAdornment position='end'>
+      <InputAdornment position="end">
         <IconButton
-          aria-label='toggle input visibility'
+          aria-label="toggle input visibility"
           onClick={() => setShowInputText(!showInputText)}
         >
           {showInputText ? (
@@ -24,10 +24,10 @@ const useInputVisibility = (inputError: string) => {
           )}
         </IconButton>
       </InputAdornment>
-    )
-  }
+    ),
+  };
 
-  return { inputVisibility, showInputText }
-}
+  return { inputVisibility, showInputText };
+};
 
-export default useInputVisibility
+export default useInputVisibility;

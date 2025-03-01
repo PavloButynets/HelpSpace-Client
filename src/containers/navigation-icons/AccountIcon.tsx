@@ -1,29 +1,29 @@
-import { useMemo, useCallback, FC, MouseEvent } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useAppSelector } from '~/hooks/use-redux'
-import { AxiosResponse } from 'axios'
+import { useMemo, useCallback, FC, MouseEvent } from "react";
+import { useTranslation } from "react-i18next";
+import { useAppSelector } from "~/hooks/use-redux";
+import { AxiosResponse } from "axios";
 
-import Tooltip from '@mui/material/Tooltip'
-import UserAvatar from '~/design-system/components/user-avatar/UserAvatar'
+import Tooltip from "@mui/material/Tooltip";
+import UserAvatar from "~/design-system/components/user-avatar/UserAvatar";
 
 // import { userService } from '~/services/user-service'
 // import useAxios from '~/hooks/use-axios'
 // import { defaultResponses } from '~/constants'
 
-import { styles } from '~/containers/navigation-icons/NavigationIcons.styles'
+import { styles } from "~/containers/navigation-icons/NavigationIcons.styles";
 
 //import { UpdatedPhoto, UserResponse, UserRole } from '~/types'
-import { createUrlPath } from '~/utils/helper-functions'
+import { createUrlPath } from "~/utils/helper-functions";
 //import { isUpdatedPhoto } from '~/utils/is-updated-photo'
 
-import avatar from '~/assets/img/user-profile-page/avatar.png'
+import avatar from "~/assets/img/user-profile-page/avatar.png";
 interface AccountIconProps {
-  openMenu: (event: MouseEvent) => void
+  openMenu: (event: MouseEvent) => void;
 }
 
 const AccountIcon: FC<AccountIconProps> = ({ openMenu }) => {
-  const { t } = useTranslation()
-  const { userId, userRole } = useAppSelector((state) => state.appMain)
+  const { t } = useTranslation();
+  const { userId, userRole } = useAppSelector((state) => state.appMain);
 
   // const getUserData: () => Promise<AxiosResponse<UserResponse>> = useCallback(
   //   () => userService.getUserById(userId, userRole as UserRole),
@@ -65,19 +65,20 @@ const AccountIcon: FC<AccountIconProps> = ({ openMenu }) => {
   // }
 
   return (
-    <Tooltip arrow title={t('iconsTooltip.account')}>
+    <Tooltip
+arrow title={t("iconsTooltip.account")}>
       <UserAvatar
-        firstName='Pavlo'
-        lastName='Butynets'
+        firstName="Pavlo"
+        lastName="Butynets"
         onClick={openMenu}
         src={avatar}
         sx={styles.accountIcon}
-        variant='photo'
+        variant="photo"
       >
         {/*{!loading && firstName && lastName && `${firstName[0]}${lastName[0]}`}*/}
       </UserAvatar>
     </Tooltip>
-  )
-}
+  );
+};
 
-export default AccountIcon
+export default AccountIcon;

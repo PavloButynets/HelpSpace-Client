@@ -1,16 +1,16 @@
-import { FC, ReactElement } from 'react'
-import { Box } from '@mui/material'
+import { FC, ReactElement } from "react";
+import { Box } from "@mui/material";
 
-import ImgTitleDescription from '~/components/img-title-description/ImgTitleDescription'
-import Button from '~scss-components/button/Button'
-import { styles } from '~/containers/notification-modal/NotificationModal.styles'
+import ImgTitleDescription from "~/components/img-title-description/ImgTitleDescription";
+import Button from "~scss-components/button/Button";
+import { styles } from "~/containers/notification-modal/NotificationModal.styles";
 
 interface ConfirmEmailModal {
-  description: string | ReactElement
-  buttonTitle: string
-  title: string
-  img: string
-  onClose: () => void
+  description: string | ReactElement;
+  buttonTitle: string;
+  title: string;
+  img: string;
+  onClose: () => void;
 }
 
 const NotificationModal: FC<ConfirmEmailModal> = ({
@@ -18,7 +18,7 @@ const NotificationModal: FC<ConfirmEmailModal> = ({
   buttonTitle,
   title,
   img,
-  onClose
+  onClose,
 }) => {
   return (
     <Box sx={styles.root}>
@@ -30,7 +30,7 @@ const NotificationModal: FC<ConfirmEmailModal> = ({
       />
       <Button onClick={onClose}>{buttonTitle}</Button>
     </Box>
-  )
-}
+  );
+};
 
-export default NotificationModal
+export default NotificationModal;

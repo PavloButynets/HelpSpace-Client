@@ -1,15 +1,15 @@
-import {FC, JSX} from 'react'
+import { FC, JSX } from "react";
 
-import Menu, { MenuProps } from '@mui/material/Menu'
+import Menu, { MenuProps } from "@mui/material/Menu";
 
-import { spliceSx } from '~/utils/helper-functions'
+import { spliceSx } from "~/utils/helper-functions";
 
-import { PositionEnum } from '~/types'
-import { styles } from '~/components/app-menu/AppMenu.styles'
+import { PositionEnum } from "~/types";
+import { styles } from "~/components/app-menu/AppMenu.styles";
 
 interface AppMenuProps extends MenuProps {
-  maxHeight?: number
-  menuList: JSX.Element | JSX.Element[]
+  maxHeight?: number;
+  menuList: JSX.Element | JSX.Element[];
 }
 
 const AppMenu: FC<AppMenuProps> = ({ maxHeight, menuList, sx, ...props }) => {
@@ -17,23 +17,23 @@ const AppMenu: FC<AppMenuProps> = ({ maxHeight, menuList, sx, ...props }) => {
     <Menu
       PaperProps={{
         style: {
-          maxHeight
-        }
+          maxHeight,
+        },
       }}
       anchorOrigin={{
         vertical: PositionEnum.Bottom,
-        horizontal: PositionEnum.Right
+        horizontal: PositionEnum.Right,
       }}
       sx={spliceSx(styles.menu, sx)}
       transformOrigin={{
         vertical: PositionEnum.Top,
-        horizontal: PositionEnum.Right
+        horizontal: PositionEnum.Right,
       }}
       {...props}
     >
       {menuList}
     </Menu>
-  )
-}
+  );
+};
 
-export default AppMenu
+export default AppMenu;

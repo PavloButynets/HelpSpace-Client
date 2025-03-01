@@ -1,5 +1,5 @@
 export enum InputFieldVariantEnum {
-  Large = 'large',
-  Small = 'small',
-  Outlined = 'outlined'
+  Large = "large",
+  Small = "small",
+  Outlined = "outlined",
 }

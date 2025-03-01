@@ -4,32 +4,19 @@
   "who-we-are": "Who we are",
   "findOffers": "Find offer",
   "allOffers": "All offers",
-  "subjects": "Subjects",
   "categories": "Categories",
   "homePage": "Home page",
-  "cooperations": "Cooperations",
-  "findTutor": "Find tutor",
-  "findStudent": "Find student",
   "faq": "FAQ",
-  "becomeTutor": "Become a tutor",
   "loginButton": "Login",
   "my-profile": "Profile",
-  "bookmarked-offers": "Bookmarks",
-  "my-cooperations": "My cooperations",
   "my-courses": "My courses",
   "my-offers": "My offers",
   "my-requests": "My requests",
-  "my-resources": "My resources",
   "logout": "Log out",
   "notifications": {
     "emptyNotifications": "No notification yet",
-    "clearAll": "Clear all",
-    "messages": {
-      "NEW_COOPERATION": "You have new cooperation",
-      "NEW_COMMENT": "You received new review",
-      "UPDATE_COOPERATION": "Your cooperation was updated",
-      "ACCEPT_COOPERATION": "Your cooperation was accepted",
-      "CANCEL_COOPERATION": "Your cooperation was declined"
-    }
-  }
+    "clearAll": "Clear all"
+  },
+  "volunteer-events": "Volunteer",
+  "need-help": "Need help ?"
 }

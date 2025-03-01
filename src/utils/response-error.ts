@@ -1,15 +1,15 @@
-import { type ErrorResponse } from '~/types'
+import { type ErrorResponse } from "~/types";
 
 class ResponseError extends Error {
-  code?: string
-  status?: number
+  code?: string;
+  status?: number;
 
   constructor({ code, message, status }: Partial<ErrorResponse>) {
-    super(message)
+    super(message);
 
-    this.code = code
-    this.status = status
+    this.code = code;
+    this.status = status;
   }
 }
 
-export { ResponseError }
+export { ResponseError };

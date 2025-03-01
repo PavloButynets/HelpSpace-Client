@@ -1,20 +1,20 @@
-import { MouseEvent, ReactNode, useState } from 'react'
-import Menu, { MenuProps } from '@mui/material/Menu'
+import { MouseEvent, ReactNode, useState } from "react";
+import Menu, { MenuProps } from "@mui/material/Menu";
 
 const useMenu = () => {
-  const [anchorEl, setAnchorEl] = useState<MenuProps['anchorEl']>(null)
+  const [anchorEl, setAnchorEl] = useState<MenuProps["anchorEl"]>(null);
 
   const openMenu = (event?: MouseEvent) => {
-    setAnchorEl(event?.currentTarget ?? null)
-  }
+    setAnchorEl(event?.currentTarget ?? null);
+  };
 
   const closeMenu = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   const renderMenu = (
     menuItems: ReactNode | ReactNode[],
-    menuProps?: Omit<MenuProps, 'open'>
+    menuProps?: Omit<MenuProps, "open">,
   ) => (
     <Menu
       anchorEl={anchorEl}
@@ -24,9 +24,9 @@ const useMenu = () => {
     >
       {menuItems}
     </Menu>
-  )
+  );
 
-  return { anchorEl, openMenu, closeMenu, renderMenu }
-}
+  return { anchorEl, openMenu, closeMenu, renderMenu };
+};
 
-export default useMenu
+export default useMenu;

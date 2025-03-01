@@ -1,14 +1,14 @@
-import { FC, ReactNode } from 'react'
-import { Link } from 'react-router-dom'
-import Box, { BoxProps } from '@mui/material/Box'
+import { FC, ReactNode } from "react";
+import { Link } from "react-router-dom";
+import Box, { BoxProps } from "@mui/material/Box";
 
-import { spliceSx } from '~/utils/helper-functions'
-import { styles } from '~/components/app-card/AppCard.styles'
+import { spliceSx } from "~/utils/helper-functions";
+import { styles } from "~/components/app-card/AppCard.styles";
 
 interface AppCardProps extends BoxProps {
-  children: ReactNode
-  link?: string
-  onClick?: () => void
+  children: ReactNode;
+  link?: string;
+  onClick?: () => void;
 }
 
 const AppCard: FC<AppCardProps> = ({
@@ -18,7 +18,7 @@ const AppCard: FC<AppCardProps> = ({
   sx = {},
   ...props
 }) => {
-  const isClickable = Boolean(link ?? onClick)
+  const isClickable = Boolean(link ?? onClick);
 
   return (
     <Box
@@ -30,7 +30,7 @@ const AppCard: FC<AppCardProps> = ({
     >
       {children}
     </Box>
-  )
-}
+  );
+};
 
-export default AppCard
+export default AppCard;

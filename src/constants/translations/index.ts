@@ -1,9 +1,9 @@
-import en from './en'
-import uk from './uk'
+import en from "./en";
+import uk from "./uk";
 
 const resources = {
   en,
-  uk
-}
+  uk,
+};
 
-export default resources
+export default resources;

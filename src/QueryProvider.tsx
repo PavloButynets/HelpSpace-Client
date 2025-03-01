@@ -1,12 +1,12 @@
-import { type ReactNode } from 'react'
-import { QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { type ReactNode } from "react";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import { queryClient } from '~/plugins/queryClient'
+import { queryClient } from "~/plugins/queryClient";
 
 type QueryProviderProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 const QueryProvider: React.FC<QueryProviderProps> = ({ children }) => {
   return (
@@ -14,7 +14,7 @@ const QueryProvider: React.FC<QueryProviderProps> = ({ children }) => {
       <ReactQueryDevtools />
       {children}
     </QueryClientProvider>
-  )
-}
+  );
+};
 
-export default QueryProvider
+export default QueryProvider;

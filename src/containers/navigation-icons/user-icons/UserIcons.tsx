@@ -1,23 +1,21 @@
-import { useState, useRef, FC } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useState, useRef, FC } from "react";
+import { useTranslation } from "react-i18next";
 
-import Box from '@mui/material/Box'
+import Box from "@mui/material/Box";
 
-import useMenu from '~/hooks/use-menu'
-import NavigationIcon from '~/components/navigation-icon/NavigationIcon'
-import AccountIcon from '~/containers/navigation-icons/AccountIcon'
-import {
-  userIcons
-} from '~/containers/navigation-icons/NavigationIcons.constants'
+import useMenu from "~/hooks/use-menu";
+import NavigationIcon from "~/components/navigation-icon/NavigationIcon";
+import AccountIcon from "~/containers/navigation-icons/AccountIcon";
+import { userIcons } from "~/containers/navigation-icons/NavigationIcons.constants";
 
-import { styles } from '~/containers/navigation-icons/NavigationIcons.styles'
-import AccountMenu from '~/containers/header/account-menu/AccountMenu'
+import { styles } from "~/containers/navigation-icons/NavigationIcons.styles";
+import AccountMenu from "~/containers/header/account-menu/AccountMenu";
 //import NotificationsMenu from '~/containers/header/notifications-menu/NotificationsMenu'
-import LanguageMenu from '~/containers/header/language-menu/LanguageMenu'
+import LanguageMenu from "~/containers/header/language-menu/LanguageMenu";
 //import { Notification } from '~/types'
 
 interface UserIconsProps {
-  setSidebarOpen: () => void
+  setSidebarOpen: () => void;
 }
 
 const UserIcons: FC<UserIconsProps> = ({ setSidebarOpen }) => {
@@ -26,22 +24,22 @@ const UserIcons: FC<UserIconsProps> = ({ setSidebarOpen }) => {
   const {
     anchorEl: accountMenuAnchorEl,
     openMenu: openAccountMenu,
-    closeMenu: closeAccountMenu
-  } = useMenu()
+    closeMenu: closeAccountMenu,
+  } = useMenu();
   const {
     anchorEl: notificationsAnchor,
     openMenu: openNotifications,
-    closeMenu: closeNotifications
-  } = useMenu()
+    closeMenu: closeNotifications,
+  } = useMenu();
   const {
     anchorEl: languageMenuAnchorEl,
     openMenu: openLanguageMenu,
-    closeMenu: closeLanguageMenu
-  } = useMenu()
+    closeMenu: closeLanguageMenu,
+  } = useMenu();
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
-  const anchorRef = useRef<HTMLDivElement | null>(null)
+  const anchorRef = useRef<HTMLDivElement | null>(null);
 
   const icons = userIcons.map(
     (item) =>
@@ -54,14 +52,14 @@ const UserIcons: FC<UserIconsProps> = ({ setSidebarOpen }) => {
             openAccountMenu,
             openNotifications,
             setSidebarOpen,
-            openLanguageMenu
+            openLanguageMenu,
           })}
           icon={item.icon}
           key={item.tooltip}
           tooltip={t(item.tooltip)}
         />
-      )
-  )
+      ),
+  );
 
   // const handleNotificationDelete = (notification: Notification) => {
   //   setNotificationItems((prev) =>
@@ -91,7 +89,7 @@ const UserIcons: FC<UserIconsProps> = ({ setSidebarOpen }) => {
       {/*  //onDelete={handleNotificationDelete}*/}
       {/*/>*/}
     </Box>
-  )
-}
+  );
+};
 
-export default UserIcons
+export default UserIcons;

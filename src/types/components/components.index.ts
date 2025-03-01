@@ -1,1 +1,1 @@
-export * from '~/types/components/accordions/accordions.interface'
+export * from "~/types/components/accordions/accordions.interface";

@@ -1,17 +1,17 @@
-import MUISwitch, { SwitchProps } from '@mui/material/Switch'
-import { CircularProgress, FormControlLabel } from '@mui/material'
-import './Switch.scss'
-interface AppSwitchProps extends Omit<SwitchProps, 'size'> {
-  labelPosition?: 'start' | 'end' | 'top' | 'bottom'
-  size?: 'sm' | 'md' | 'lg'
-  label?: string
-  loading?: boolean
+import MUISwitch, { SwitchProps } from "@mui/material/Switch";
+import { CircularProgress, FormControlLabel } from "@mui/material";
+import "./Switch.scss";
+interface AppSwitchProps extends Omit<SwitchProps, "size"> {
+  labelPosition?: "start" | "end" | "top" | "bottom";
+  size?: "sm" | "md" | "lg";
+  label?: string;
+  loading?: boolean;
 }
 
 const Switch = ({
-  labelPosition = 'end',
-  size = 'md',
-  label = '',
+  labelPosition = "end",
+  size = "md",
+  label = "",
   loading,
   disabled,
   ...props
@@ -19,11 +19,12 @@ const Switch = ({
   const loaderSizes = {
     sm: 21,
     md: 28,
-    lg: 35
-  }
+    lg: 35,
+  };
   const loader = (
-    <CircularProgress data-testid='loader' size={loaderSizes[size]} />
-  )
+    <CircularProgress
+data-testid="loader" size={loaderSizes[size]} />
+  );
   return loading ? (
     loader
   ) : (
@@ -39,7 +40,7 @@ const Switch = ({
       label={label}
       labelPlacement={labelPosition}
     />
-  )
-}
+  );
+};
 
-export default Switch
+export default Switch;

@@ -1,77 +1,77 @@
-import { type CSSProperties, type ReactNode } from 'react'
+import { type CSSProperties, type ReactNode } from "react";
 
-type ChipType = 'category' | 'filter' | 'input' | 'state'
+type ChipType = "category" | "filter" | "input" | "state";
 
 type ChipColor =
-  | 'blue'
-  | 'blue-gray'
-  | 'green'
-  | 'neutral'
-  | 'purple'
-  | 'red'
-  | 'turquoise'
-  | 'yellow'
+  | "blue"
+  | "blue-gray"
+  | "green"
+  | "neutral"
+  | "purple"
+  | "red"
+  | "turquoise"
+  | "yellow";
 
 type ChipWithLabel = {
-  label: string
-}
+  label: string;
+};
 
 type ChipWithIcons = {
-  endIcon?: ReactNode
-  startIcon?: ReactNode
-}
+  endIcon?: ReactNode;
+  startIcon?: ReactNode;
+};
 
 type CommonChipProps<T extends ChipType> = {
-  disabled?: boolean
-  size?: 'sm' | 'md' | 'lg'
-  type: T
-}
+  disabled?: boolean;
+  size?: "sm" | "md" | "lg";
+  type: T;
+};
 
-type FilterChipProps = CommonChipProps<'filter'> &
+type FilterChipProps = CommonChipProps<"filter"> &
   ChipWithLabel &
   ChipWithIcons & {
-    initialIsOpen?: boolean
-    initialSelectedOption?: string | null
-    isOpen?: boolean
-    onIsOpenChange?: (isOpen: boolean) => void
-    onSelectedOptionChange?: (option: string) => void
-    options: string[]
-    selectedOption?: string | null
-    variant?: 'filled' | 'minimal'
-  }
+    initialIsOpen?: boolean;
+    initialSelectedOption?: string | null;
+    isOpen?: boolean;
+    onIsOpenChange?: (isOpen: boolean) => void;
+    onSelectedOptionChange?: (option: string) => void;
+    options: string[];
+    selectedOption?: string | null;
+    variant?: "filled" | "minimal";
+  };
 
-type InputChipProps = CommonChipProps<'input'> &
+type InputChipProps = CommonChipProps<"input"> &
   ChipWithLabel &
   ChipWithIcons & {
-    onRemoveButtonClick?: () => void
-    variant?: 'filled' | 'outlined' | 'filled-outlined'
-  }
+    onRemoveButtonClick?: () => void;
+    variant?: "filled" | "outlined" | "filled-outlined";
+  };
 
-type CategoryChipProps = CommonChipProps<'category'> &
+type CategoryChipProps = CommonChipProps<"category"> &
   ChipWithLabel & {
-    color?: ChipColor
-    detail: string
-  }
+    color?: ChipColor;
+    detail: string;
+  };
 
-type StateChipProps = CommonChipProps<'state'> &
+type StateChipProps = CommonChipProps<"state"> &
   ChipWithLabel &
-  Pick<ChipWithIcons, 'startIcon'> & {
-    color?: ChipColor
-  }
+  Pick<ChipWithIcons, "startIcon"> & {
+    color?: ChipColor;
+  };
 
-type ChipContentProps = ChipWithLabel & ChipWithIcons
+type ChipContentProps = ChipWithLabel & ChipWithIcons;
 
 type BaseChipProps = CommonChipProps<ChipType> & {
-  children: ReactNode
-  className?: string
-  style?: CSSProperties
-}
+  children: ReactNode;
+  className?: string;
+  style?: CSSProperties;
+};
 
 type ChipProps =
   | FilterChipProps
   | InputChipProps
   | CategoryChipProps
-  | StateChipProps
+  | StateChipProps;
 
 export {
   type BaseChipProps,
@@ -81,5 +81,5 @@ export {
   type FilterChipProps,
   type InputChipProps,
   type StateChipProps,
-  type ChipColor
-}
+  type ChipColor,
+};

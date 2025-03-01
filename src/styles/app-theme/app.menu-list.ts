@@ -1,14 +1,14 @@
-import { mainShadow } from '~/styles/app-theme/custom-shadows'
+import { mainShadow } from "~/styles/app-theme/custom-shadows";
 
 export const menuList = {
   styleOverrides: {
     root: {
-      '& .MuiPaper-root': {
-        boxShadow: mainShadow
+      "& .MuiPaper-root": {
+        boxShadow: mainShadow,
       },
-      '& .MuiMenu-list': {
-        padding: 0
-      }
-    }
-  }
-}
+      "& .MuiMenu-list": {
+        padding: 0,
+      },
+    },
+  },
+};

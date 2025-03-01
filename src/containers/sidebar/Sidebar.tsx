@@ -1,30 +1,30 @@
-import { FC } from 'react'
-import { useTranslation } from 'react-i18next'
+import { FC } from "react";
+import { useTranslation } from "react-i18next";
 
-import Typography from '@mui/material/Typography'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import Divider from '@mui/material/Divider'
+import Typography from "@mui/material/Typography";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
 
-import HashLink from '~/components/hash-link/HashLink'
-import useBreakpoints from '~/hooks/use-breakpoints'
-import { RouteItem } from '~/types/common/interfaces/common.interfaces'
+import HashLink from "~/components/hash-link/HashLink";
+import useBreakpoints from "~/hooks/use-breakpoints";
+import { RouteItem } from "~/types/common/interfaces/common.interfaces";
 
-import { styles } from '~/containers/sidebar/Sidebar.styles'
+import { styles } from "~/containers/sidebar/Sidebar.styles";
 
 interface SidebarProps {
-  onClose: () => void
-  navigationItems: RouteItem[]
-  accountItems: RouteItem[]
+  onClose: () => void;
+  navigationItems: RouteItem[];
+  accountItems: RouteItem[];
 }
 
 const Sidebar: FC<SidebarProps> = ({
   onClose,
   navigationItems,
-  accountItems
+  accountItems,
 }) => {
-  const { isLaptopAndAbove } = useBreakpoints()
-  const { t } = useTranslation()
+  const { isLaptopAndAbove } = useBreakpoints();
+  const { t } = useTranslation();
 
   const renderListItems = (items: RouteItem[]) => (
     <List sx={styles.list}>
@@ -41,21 +41,21 @@ const Sidebar: FC<SidebarProps> = ({
         </ListItem>
       ))}
     </List>
-  )
+  );
 
   const accountItemsSection = !isLaptopAndAbove && accountItems.length > 0 && (
     <>
       <Divider />
       {renderListItems(accountItems)}
     </>
-  )
+  );
 
   return (
     <>
       {renderListItems(navigationItems)}
       {accountItemsSection}
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

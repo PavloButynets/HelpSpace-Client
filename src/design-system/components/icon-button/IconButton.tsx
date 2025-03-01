@@ -1,30 +1,30 @@
 import {
   CircularProgress,
   IconButtonProps,
-  IconButton as MuiIconButton
-} from '@mui/material'
-import { FC } from 'react'
-import { type To } from 'react-router-dom'
-import { IconButtonVariant } from './IconButton.constants'
-import AddRoundedIcon from '@mui/icons-material/AddRounded'
-import { cn } from '~/utils/cn'
-import './IconButton.scss'
+  IconButton as MuiIconButton,
+} from "@mui/material";
+import { FC } from "react";
+import { type To } from "react-router-dom";
+import { IconButtonVariant } from "./IconButton.constants";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import { cn } from "~/utils/cn";
+import "./IconButton.scss";
 
-interface S2SIconButtonProps extends Omit<IconButtonProps, 'size'> {
-  variant?: IconButtonVariant
-  size?: 'xs' | 'sm' | 'md' | 'lg'
-  loading?: boolean
-  disabled?: boolean
-  toggleAble?: boolean
-  isToggled?: boolean
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  to?: To
-  children?: React.ReactNode
+interface S2SIconButtonProps extends Omit<IconButtonProps, "size"> {
+  variant?: IconButtonVariant;
+  size?: "xs" | "sm" | "md" | "lg";
+  loading?: boolean;
+  disabled?: boolean;
+  toggleAble?: boolean;
+  isToggled?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  to?: To;
+  children?: React.ReactNode;
 }
 
 export const IconButton: FC<S2SIconButtonProps> = ({
   variant = IconButtonVariant.Primary,
-  size = 'md',
+  size = "md",
   loading = false,
   disabled = false,
   toggleAble = false,
@@ -34,27 +34,28 @@ export const IconButton: FC<S2SIconButtonProps> = ({
   ...props
 }) => {
   const classNamesContainerIconBG = cn(
-    's2s-icon-button',
+    "s2s-icon-button",
     `s2s-icon-button--${size}`,
-    `s2s-icon-button--${variant}${toggleAble && isToggled ? '-toggle-able' : ''}`
-  )
+    `s2s-icon-button--${variant}${toggleAble && isToggled ? "-toggle-able" : ""}`,
+  );
   const classNamesContainerIcon = cn(
-    's2s-icon',
+    "s2s-icon",
     `s2s-icon--${size}`,
-    `s2s-icon--${variant}${toggleAble && isToggled ? '-toggle-able' : ''}`
-  )
+    `s2s-icon--${variant}${toggleAble && isToggled ? "-toggle-able" : ""}`,
+  );
   const loaderSizes = {
     xs: 12,
     sm: 16,
     md: 20,
-    lg: 24
-  }
+    lg: 24,
+  };
   const loader = (
-    <CircularProgress data-testid='loader' size={loaderSizes[size]} />
-  )
+    <CircularProgress
+data-testid="loader" size={loaderSizes[size]} />
+  );
   const buttonContent = loading
     ? loader
-    : (children ?? <AddRoundedIcon className={classNamesContainerIcon} />)
+    : (children ?? <AddRoundedIcon className={classNamesContainerIcon} />);
   return (
     <MuiIconButton
       className={classNamesContainerIconBG}
@@ -64,5 +65,5 @@ export const IconButton: FC<S2SIconButtonProps> = ({
     >
       {buttonContent}
     </MuiIconButton>
-  )
-}
+  );
+};

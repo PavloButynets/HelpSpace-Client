@@ -28,6 +28,7 @@ import { styles } from '~/containers/auth/signup-dialog/SignupDialog.styles'
 import { openAlert } from '~/redux/features/snackbarSlice'
 import { getErrorKey } from '~/utils/helper-functions.js'
 import {useSignUpMutation} from "~/services/auth-service.js";
+import SignupForm from "~/containers/auth/signup-form/SignupForm.js";
 
 
 const SignupDialog = () => {

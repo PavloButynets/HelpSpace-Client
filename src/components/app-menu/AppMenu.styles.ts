@@ -1,7 +1,7 @@
 export const styles = {
   menu: {
-    '& .MuiPaper-root': {
-      borderRadius: 0
-    }
-  }
-}
+    "& .MuiPaper-root": {
+      borderRadius: 0,
+    },
+  },
+};

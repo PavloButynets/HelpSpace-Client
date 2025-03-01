@@ -1,38 +1,38 @@
-import { Badge as MuiBadge, BadgeProps as MuiBadgeProps } from '@mui/material'
-import './Badge.scss'
+import { Badge as MuiBadge, BadgeProps as MuiBadgeProps } from "@mui/material";
+import "./Badge.scss";
 
-type BadgeColor = 'primary' | 'success' | 'error'
+type BadgeColor = "primary" | "success" | "error";
 
 type SmallBadgeProps = {
-  variant: 'sm'
-  color?: BadgeColor
-  isVisible?: boolean
-}
+  variant: "sm";
+  color?: BadgeColor;
+  isVisible?: boolean;
+};
 
 type LargeBadgeProps = {
-  variant: 'lg'
-  badgeContent: number
-  maxContent?: number
-  color?: BadgeColor
-  isVisible?: boolean
-  isZeroShown?: boolean
-}
+  variant: "lg";
+  badgeContent: number;
+  maxContent?: number;
+  color?: BadgeColor;
+  isVisible?: boolean;
+  isZeroShown?: boolean;
+};
 
 type BadgeProps = (LargeBadgeProps | SmallBadgeProps) &
-  Omit<MuiBadgeProps, 'variant'>
+  Omit<MuiBadgeProps, "variant">;
 
 const Badge: React.FC<BadgeProps> = ({
   children,
   isVisible = true,
-  color = 'primary',
+  color = "primary",
   ...props
 }) => {
-  const badgeContent = isVisible ? props.badgeContent : 0
-  const variant = props.variant === 'sm' ? 'dot' : 'standard'
+  const badgeContent = isVisible ? props.badgeContent : 0;
+  const variant = props.variant === "sm" ? "dot" : "standard";
   const maxContent =
-    props.variant === 'lg' ? (props.maxContent ?? 10) : undefined
+    props.variant === "lg" ? (props.maxContent ?? 10) : undefined;
   const isZeroShown =
-    props.variant === 'lg' ? (props.isZeroShown ?? false) : undefined
+    props.variant === "lg" ? (props.isZeroShown ?? false) : undefined;
 
   return (
     <MuiBadge
@@ -40,13 +40,13 @@ const Badge: React.FC<BadgeProps> = ({
       className={`s2s-badge-${color}`}
       color={color}
       max={maxContent}
-      overlap='circular'
+      overlap="circular"
       showZero={isZeroShown}
       variant={variant}
     >
       {children}
     </MuiBadge>
-  )
-}
+  );
+};
 
-export default Badge
+export default Badge;

@@ -1,16 +1,16 @@
-import palette from './app.pallete'
+import palette from "./app.pallete";
 
 const table = {
   styleOverrides: {
     root: {
-      '&.MuiTableRow-hover:hover': {
-        backgroundColor: palette.basic.grey
+      "&.MuiTableRow-hover:hover": {
+        backgroundColor: palette.basic.grey,
       },
-      '& .MuiTableCell-root': {
-        borderBottom: 'none'
-      }
-    }
-  }
-}
+      "& .MuiTableCell-root": {
+        borderBottom: "none",
+      },
+    },
+  },
+};
 
-export default table
+export default table;

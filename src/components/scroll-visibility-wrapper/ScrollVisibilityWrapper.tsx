@@ -1,34 +1,34 @@
-import { FC, useState, useEffect, ReactElement } from 'react'
+import { FC, useState, useEffect, ReactElement } from "react";
 
 interface ScrollVisibilityWrapperProps {
-  pageRef: React.RefObject<HTMLDivElement> | null
-  children: ReactElement
-  heightToShow: number
+  pageRef: React.RefObject<HTMLDivElement> | null;
+  children: ReactElement;
+  heightToShow: number;
 }
 
 const ScrollVisibilityWrapper: FC<ScrollVisibilityWrapperProps> = ({
   pageRef,
   children,
-  heightToShow
+  heightToShow,
 }) => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const scrollVariable = pageRef?.current
+    const scrollVariable = pageRef?.current;
 
     if (scrollVariable) {
       const scroll = () =>
         scrollVariable.scrollTop > heightToShow
           ? setIsVisible(true)
-          : setIsVisible(false)
+          : setIsVisible(false);
 
-      scrollVariable.addEventListener('scroll', scroll)
+      scrollVariable.addEventListener("scroll", scroll);
 
-      return () => scrollVariable.removeEventListener('scroll', scroll)
+      return () => scrollVariable.removeEventListener("scroll", scroll);
     }
-  }, [pageRef, heightToShow])
+  }, [pageRef, heightToShow]);
 
-  return isVisible ? children : null
-}
+  return isVisible ? children : null;
+};
 
-export default ScrollVisibilityWrapper
+export default ScrollVisibilityWrapper;

@@ -1,46 +1,46 @@
-import { forwardRef, useState } from 'react'
-import { Menu as MuiMenu, PopoverOrigin } from '@mui/material'
+import { forwardRef, useState } from "react";
+import { Menu as MuiMenu, PopoverOrigin } from "@mui/material";
 
 import {
   MenuItemProps as CommonMenuItemProps,
-  OnItemClickArgs
-} from '~/design-system/components/menu-item/MenuItem.types'
-import MenuItem from '../menu-item/MenuItem'
+  OnItemClickArgs,
+} from "~/design-system/components/menu-item/MenuItem.types";
+import MenuItem from "../menu-item/MenuItem";
 import {
   MenuItemColorVariant,
-  MenuItemVariant
-} from '../menu-item/MenuItem.constants'
+  MenuItemVariant,
+} from "../menu-item/MenuItem.constants";
 
-import './Menu.scss'
+import "./Menu.scss";
 
-const dafaultRemoveAllItemsTitle = 'Clear all'
-const defaultNoItemsMessage = 'No items.'
+const dafaultRemoveAllItemsTitle = "Clear all";
+const defaultNoItemsMessage = "No items.";
 
 interface NestedMenuItemProps extends CommonMenuItemProps {
-  defaultOnItemClickArgs?: OnItemClickArgs
-  isInitiallyToggled?: boolean
+  defaultOnItemClickArgs?: OnItemClickArgs;
+  isInitiallyToggled?: boolean;
 }
 
 interface MenuItemProps extends NestedMenuItemProps {
-  nestedMenuItems?: NestedMenuItemProps[]
+  nestedMenuItems?: NestedMenuItemProps[];
 }
 
 interface MenuProps {
-  anchorEl: HTMLElement | null
-  setAnchorEl: (anchorEl: HTMLElement | null) => void
-  menuItems: MenuItemProps[]
-  allowToggleMultipleItems?: boolean
-  anchorOrigin?: PopoverOrigin
-  density?: 1 | 2
-  defaultOnItemClick?: (args: OnItemClickArgs) => void
-  isItemsRemovalEnabled?: boolean
-  noItemsMessage?: string
-  maxHeight?: number
-  minWidth?: number
-  removeAllItemsTitle: string
-  transformOrigin?: PopoverOrigin
-  toggledItemsTitles?: string[]
-  onToggleItemsChange?: (newTitles: string[]) => void
+  anchorEl: HTMLElement | null;
+  setAnchorEl: (anchorEl: HTMLElement | null) => void;
+  menuItems: MenuItemProps[];
+  allowToggleMultipleItems?: boolean;
+  anchorOrigin?: PopoverOrigin;
+  density?: 1 | 2;
+  defaultOnItemClick?: (args: OnItemClickArgs) => void;
+  isItemsRemovalEnabled?: boolean;
+  noItemsMessage?: string;
+  maxHeight?: number;
+  minWidth?: number;
+  removeAllItemsTitle: string;
+  transformOrigin?: PopoverOrigin;
+  toggledItemsTitles?: string[];
+  onToggleItemsChange?: (newTitles: string[]) => void;
 }
 
 const Menu = forwardRef<HTMLDivElement, MenuProps>(
@@ -61,88 +61,88 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>(
       onToggleItemsChange,
       ...menuProps
     },
-    ref
+    ref,
   ) => {
-    const [items, setItems] = useState<MenuItemProps[]>(menuItems)
+    const [items, setItems] = useState<MenuItemProps[]>(menuItems);
     const [internalToggledItemsTitles, setInternalToggledItemsTitles] =
       useState<string[]>(
         allowToggleMultipleItems
           ? menuItems
               .filter((item) => item.isInitiallyToggled)
               .map((item) => item.title)
-          : []
-      )
+          : [],
+      );
 
     const toggledItemsTitles =
       customToggledItemsTitles && onToggleItemsChange
         ? customToggledItemsTitles
-        : internalToggledItemsTitles
+        : internalToggledItemsTitles;
 
     const setToggledItemsTitles = (
-      updater: (prevItems: string[]) => string[]
+      updater: (prevItems: string[]) => string[],
     ) => {
       onToggleItemsChange
         ? onToggleItemsChange(updater(toggledItemsTitles))
-        : setInternalToggledItemsTitles(updater)
-    }
+        : setInternalToggledItemsTitles(updater);
+    };
 
     const toggleAsSingleItem = (itemTitle: string) => {
       setToggledItemsTitles((previousItems) => {
-        return previousItems.includes(itemTitle) ? [] : [itemTitle]
-      })
-    }
+        return previousItems.includes(itemTitle) ? [] : [itemTitle];
+      });
+    };
 
     const toggleAsOneOfMultipleItems = (itemTitle: string) => {
       setToggledItemsTitles((previousItems) => {
         return previousItems.includes(itemTitle)
           ? previousItems.filter((item) => item !== itemTitle)
-          : [...previousItems, itemTitle]
-      })
-    }
+          : [...previousItems, itemTitle];
+      });
+    };
 
     const handleMenuClose = () => {
-      setAnchorEl(null)
-    }
+      setAnchorEl(null);
+    };
 
     const handleItemClick = ({
       title,
       defaultOnItemClickArgs,
       nestedMenuItems,
-      onClick: customOnClick
+      onClick: customOnClick,
     }: MenuItemProps) => {
       allowToggleMultipleItems
         ? toggleAsOneOfMultipleItems(title)
-        : toggleAsSingleItem(title)
+        : toggleAsSingleItem(title);
 
       if ((!customOnClick && !defaultOnItemClick) || nestedMenuItems) {
-        return
+        return;
       }
 
       if (customOnClick) {
-        customOnClick()
-        handleMenuClose()
+        customOnClick();
+        handleMenuClose();
       } else if (defaultOnItemClick) {
         const args: OnItemClickArgs =
           defaultOnItemClickArgs === undefined
             ? { title }
-            : { title, ...defaultOnItemClickArgs }
+            : { title, ...defaultOnItemClickArgs };
 
-        defaultOnItemClick(args)
+        defaultOnItemClick(args);
       }
 
       if (allowToggleMultipleItems) {
-        return
+        return;
       }
 
-      setToggledItemsTitles(() => [])
-      handleMenuClose()
-    }
+      setToggledItemsTitles(() => []);
+      handleMenuClose();
+    };
 
     const handleItemRemoval = (title: string) => {
       setItems((previousItems) =>
-        previousItems.filter((item) => item.title !== title)
-      )
-    }
+        previousItems.filter((item) => item.title !== title),
+      );
+    };
 
     return (
       <MuiMenu
@@ -153,8 +153,8 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>(
         ref={ref}
         slotProps={{
           paper: {
-            style: { maxHeight: maxHeight, minWidth: minWidth }
-          }
+            style: { maxHeight: maxHeight, minWidth: minWidth },
+          },
         }}
         {...menuProps}
       >
@@ -182,12 +182,12 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>(
                   variant={MenuItemVariant.Nested}
                 />
               ))
-            : [])
+            : []),
         ])}
         {isItemsRemovalEnabled &&
           (items.length >= 1 ? (
             <MenuItem
-              alignVariant='center'
+              alignVariant="center"
               colorVariant={MenuItemColorVariant.Secondary}
               onClick={() => setItems([])}
               title={removeAllItemsTitle}
@@ -196,10 +196,10 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>(
             <MenuItem isDisabled title={noItemsMessage} />
           ))}
       </MuiMenu>
-    )
-  }
-)
+    );
+  },
+);
 
-Menu.displayName = 'Menu'
+Menu.displayName = "Menu";
 
-export default Menu
+export default Menu;

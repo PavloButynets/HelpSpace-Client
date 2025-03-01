@@ -1,26 +1,26 @@
-import { SxProps } from '@mui/material'
-import { ReactNode } from 'react'
+import { SxProps } from "@mui/material";
+import { ReactNode } from "react";
 
 export interface AccordionItem {
-  title: string
-  description?: string
-  content?: ReactNode
+  title: string;
+  description?: string;
+  content?: ReactNode;
 }
 export interface AccordionStyles {
-  root?: SxProps
-  accordion?: SxProps
-  active?: SxProps
-  inactive?: SxProps
-  summary?: SxProps
-  titleActive?: SxProps
-  titleInactive?: SxProps
-  details?: SxProps
-  description?: SxProps
+  root?: SxProps;
+  accordion?: SxProps;
+  active?: SxProps;
+  inactive?: SxProps;
+  summary?: SxProps;
+  titleActive?: SxProps;
+  titleInactive?: SxProps;
+  details?: SxProps;
+  description?: SxProps;
 }
 export interface AccordionWithImageItem extends AccordionItem {
-  image: string
+  image: string;
 }
 export interface AccordionSx {
-  withIcon?: AccordionStyles
-  noIcon?: AccordionStyles
+  withIcon?: AccordionStyles;
+  noIcon?: AccordionStyles;
 }

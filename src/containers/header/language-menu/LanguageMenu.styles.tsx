@@ -1,5 +1,5 @@
 export const styles = {
   active: {
-    backgroundColor: 'primary.100'
-  }
-}
+    backgroundColor: "primary.100",
+  },
+};

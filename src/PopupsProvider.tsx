@@ -1,10 +1,10 @@
-import { ModalProvider } from '~/context/modal-context'
-import { ConfirmationDialogProvider } from '~/context/confirm-context'
+import { ModalProvider } from "~/context/modal-context";
+import { ConfirmationDialogProvider } from "~/context/confirm-context";
 
-import { FC, ReactElement } from 'react'
+import { FC, ReactElement } from "react";
 
 interface PopupsProvider {
-  children: ReactElement
+  children: ReactElement;
 }
 
 const PopupsProvider: FC<PopupsProvider> = ({ children }) => {
@@ -12,7 +12,7 @@ const PopupsProvider: FC<PopupsProvider> = ({ children }) => {
     <ConfirmationDialogProvider>
       <ModalProvider>{children}</ModalProvider>
     </ConfirmationDialogProvider>
-  )
-}
+  );
+};
 
-export default PopupsProvider
+export default PopupsProvider;

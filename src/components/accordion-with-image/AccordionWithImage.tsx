@@ -1,26 +1,27 @@
-import { FC } from 'react'
+import { FC } from "react";
 
-import Accordions from '~/components/accordion/Accordions'
-import Box from '@mui/material/Box'
-import useAccordions from '~/hooks/use-accordions'
+import Accordions from "~/components/accordion/Accordions";
+import Box from "@mui/material/Box";
+import useAccordions from "~/hooks/use-accordions";
 
-import { styles } from '~/components/accordion-with-image/AccordionWithImage.styles'
-import { AccordionWithImageItem, TypographyVariantEnum } from '~/types'
+import { styles } from "~/components/accordion-with-image/AccordionWithImage.styles";
+import { AccordionWithImageItem, TypographyVariantEnum } from "~/types";
 
 interface AccordionWithImageProps {
-  items: AccordionWithImageItem[]
+  items: AccordionWithImageItem[];
 }
 
 const AccordionWithImage: FC<AccordionWithImageProps> = ({ items }) => {
   const [expandedItem, handleAccordionChange] = useAccordions({
     toggle: false,
-    initialState: 0
-  })
+    initialState: 0,
+  });
 
   return (
-    <Box className='section' data-testid='accordion' sx={styles.feature}>
+    <Box
+className="section" data-testid="accordion" sx={styles.feature}>
       <Box
-        component='img'
+        component="img"
         src={items[expandedItem ?? 0].image}
         sx={styles.image}
       />
@@ -32,7 +33,7 @@ const AccordionWithImage: FC<AccordionWithImageProps> = ({ items }) => {
         titleVariant={TypographyVariantEnum.H6}
       />
     </Box>
-  )
-}
+  );
+};
 
-export default AccordionWithImage
+export default AccordionWithImage;

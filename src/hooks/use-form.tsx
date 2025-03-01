@@ -1,252 +1,254 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
-import { getEmptyValues } from '~/utils/helper-functions'
-import { isEqual } from '~/utils/helper-functions'
+import { getEmptyValues } from "~/utils/helper-functions";
+import { isEqual } from "~/utils/helper-functions";
 
 export type FormNonInputValueChange<Value, Fields> = (
-    key: keyof Fields,
-    value: Value
-) => void
+  key: keyof Fields,
+  value: Value,
+) => void;
 
-export type UseFormErrors<T> = Record<keyof T, string>
+export type UseFormErrors<T> = Record<keyof T, string>;
 
 export type UseFormValidations<T> = {
-    [Key in keyof T]: FormValidationHandler<T, T[Key]>
-}
+  [Key in keyof T]: FormValidationHandler<T, T[Key]>;
+};
 type FormValidationHandler<Data, Value> = (
-    value: Value | string,
-    data: Data
-) => string | undefined
+  value: Value | string,
+  data: Data,
+) => string | undefined;
 
 export type UseFormEventHandler<Fields, Event> = (
-    key: keyof Fields
-) => (event: Event) => void
-
+  key: keyof Fields,
+) => (event: Event) => void;
 
 interface UseFormProps<T> {
-  initialValues: T
-  initialErrors?: UseFormErrors<T>
-  validations?: Partial<UseFormValidations<T>>
-  onSubmit?: (data?: T) => Promise<void> | void
-  submitWithData?: boolean
+  initialValues: T;
+  initialErrors?: UseFormErrors<T>;
+  validations?: Partial<UseFormValidations<T>>;
+  onSubmit?: (data?: T) => Promise<void> | void;
+  submitWithData?: boolean;
 }
 
 interface UseFormOutput<T> {
-  data: T
-  isDirty: boolean
-  isValid: boolean
-  errors: UseFormErrors<T>
-  trigger: (key?: keyof T | (keyof T)[]) => boolean
-  handleInputChange: UseFormEventHandler<T, React.ChangeEvent<HTMLInputElement>>
-  handleNonInputValueChange: FormNonInputValueChange<T[keyof T], T>
-  handleBlur: UseFormEventHandler<T, React.FocusEvent<HTMLInputElement>>
-  handleErrors: (key: keyof T, error: string) => void
-  handleSubmit: (event?: React.FormEvent<HTMLDivElement>) => void
-  resetData: (keys?: (keyof T)[]) => void
-  resetErrors: () => void
-  handleDataChange: <K extends object>(newData: K) => void
+  data: T;
+  isDirty: boolean;
+  isValid: boolean;
+  errors: UseFormErrors<T>;
+  trigger: (key?: keyof T | (keyof T)[]) => boolean;
+  handleInputChange: UseFormEventHandler<
+    T,
+    React.ChangeEvent<HTMLInputElement>
+  >;
+  handleNonInputValueChange: FormNonInputValueChange<T[keyof T], T>;
+  handleBlur: UseFormEventHandler<T, React.FocusEvent<HTMLInputElement>>;
+  handleErrors: (key: keyof T, error: string) => void;
+  handleSubmit: (event?: React.FormEvent<HTMLDivElement>) => void;
+  resetData: (keys?: (keyof T)[]) => void;
+  resetErrors: () => void;
+  handleDataChange: <K extends object>(newData: K) => void;
 }
 
 export const useForm = <T extends object>({
   initialValues,
-  initialErrors = getEmptyValues(initialValues, ''),
+  initialErrors = getEmptyValues(initialValues, ""),
   validations,
   onSubmit,
-  submitWithData
+  submitWithData,
 }: UseFormProps<T>): UseFormOutput<T> => {
-  const [data, setData] = useState<T>(initialValues)
-  const [isDirty, setIsDirty] = useState<boolean>(false)
-  const [isFormValid, setIsFormValid] = useState<boolean>(true)
-  const [errors, setErrors] = useState<UseFormErrors<T>>(initialErrors)
+  const [data, setData] = useState<T>(initialValues);
+  const [isDirty, setIsDirty] = useState<boolean>(false);
+  const [isFormValid, setIsFormValid] = useState<boolean>(true);
+  const [errors, setErrors] = useState<UseFormErrors<T>>(initialErrors);
   const [isTouched, setIsTouched] = useState<Record<keyof T, boolean>>(
-    getEmptyValues(initialValues, false)
-  )
+    getEmptyValues(initialValues, false),
+  );
 
   useEffect(() => {
-    setIsFormValid(!Object.values(errors).some((error) => error))
-  }, [errors])
+    setIsFormValid(!Object.values(errors).some((error) => error));
+  }, [errors]);
 
   const validateValue = useCallback(
     (key: keyof T, value: T[keyof T] | string) => {
       if (validations && validations[key]) {
-        return validations[key]?.(value, data)
+        return validations[key]?.(value, data);
       }
     },
-    [data, validations]
-  )
+    [data, validations],
+  );
 
   const checkForError = useCallback(
     <K extends keyof T>(key: K, value: T[K] | string) => {
       if (isTouched[key] || errors[key]) {
-        const valid = validateValue(key, value)
+        const valid = validateValue(key, value);
 
         setErrors((prev) => ({
           ...prev,
-          [key]: valid ?? ''
-        }))
+          [key]: valid ?? "",
+        }));
       }
     },
-    [errors, isTouched, validateValue]
-  )
+    [errors, isTouched, validateValue],
+  );
 
   const handleInputChange = useCallback(
     (key: keyof T) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      const nameRegex = /[^a-zA-Z\u0400-\u04FF'\- ]/g
+      const nameRegex = /[^a-zA-Z\u0400-\u04FF'\- ]/g;
 
       let value =
-        event.target.type === 'checkbox'
+        event.target.type === "checkbox"
           ? event.target.checked
-          : event.target.value
+          : event.target.value;
 
       if (
-        (key === 'firstName' || key === 'lastName') &&
-        typeof value === 'string'
+        (key === "firstName" || key === "lastName") &&
+        typeof value === "string"
       ) {
-        value = value.replace(nameRegex, '')
+        value = value.replace(nameRegex, "");
       }
 
       setData((prev) => {
         const newData = {
           ...prev,
-          [key]: value
-        }
-        setIsDirty(!isEqual(newData, initialValues))
-        return newData
-      })
-      checkForError(key, event.target.value)
+          [key]: value,
+        };
+        setIsDirty(!isEqual(newData, initialValues));
+        return newData;
+      });
+      checkForError(key, event.target.value);
     },
-    [checkForError, initialValues]
-  )
+    [checkForError, initialValues],
+  );
 
   const handleNonInputValueChange = useCallback(
     <K extends keyof T>(key: K, value: T[K]) => {
       setData((prev) => {
         const newData = {
           ...prev,
-          [key]: value
-        }
-        setIsDirty(!isEqual(newData, initialValues))
-        return newData
-      })
-      checkForError(key, value)
+          [key]: value,
+        };
+        setIsDirty(!isEqual(newData, initialValues));
+        return newData;
+      });
+      checkForError(key, value);
     },
-    [checkForError, initialValues]
-  )
+    [checkForError, initialValues],
+  );
 
   const handleErrors = useCallback((key: keyof T, error: string) => {
     setErrors((prev) => ({
       ...prev,
-      [key]: error
-    }))
-  }, [])
+      [key]: error,
+    }));
+  }, []);
 
   const handleBlur = useCallback(
     (key: keyof T) => (event: React.FocusEvent<HTMLInputElement>) => {
-      setIsDirty(!isEqual(data, initialValues))
+      setIsDirty(!isEqual(data, initialValues));
 
-      const valid = validateValue(key, event.target.value)
+      const valid = validateValue(key, event.target.value);
 
       setErrors((prev) => ({
         ...prev,
-        [key]: valid ?? ''
-      }))
+        [key]: valid ?? "",
+      }));
       setIsTouched((prev) => ({
         ...prev,
-        [key]: true
-      }))
+        [key]: true,
+      }));
     },
-    [data, initialValues, validateValue]
-  )
+    [data, initialValues, validateValue],
+  );
   const handleSubmit = useCallback(
     (event?: React.FormEvent<HTMLDivElement>) => {
-      event?.preventDefault()
-      let isValid = true
-      const submittedData = submitWithData ? data : undefined
-      const newErrors = { ...errors }
+      event?.preventDefault();
+      let isValid = true;
+      const submittedData = submitWithData ? data : undefined;
+      const newErrors = { ...errors };
 
       if (validations) {
         for (const key in validations) {
-          const value = data[key]
-          const validation = validateValue(key, value)
+          const value = data[key];
+          const validation = validateValue(key, value);
           if (validation) {
-            isValid = false
-            newErrors[key] = validation
+            isValid = false;
+            newErrors[key] = validation;
           }
         }
       }
 
-      isValid ? onSubmit && void onSubmit(submittedData) : setErrors(newErrors)
+      isValid ? onSubmit && void onSubmit(submittedData) : setErrors(newErrors);
     },
-    [data, errors, onSubmit, submitWithData, validateValue, validations]
-  )
+    [data, errors, onSubmit, submitWithData, validateValue, validations],
+  );
 
   const trigger = useCallback(
     (key?: keyof T | (keyof T)[]): boolean => {
-      if (!validations) return true
+      if (!validations) return true;
 
-      let fieldNames: (keyof T)[]
+      let fieldNames: (keyof T)[];
 
       if (key) {
-        fieldNames = Array.isArray(key) ? key : [key]
+        fieldNames = Array.isArray(key) ? key : [key];
       } else {
-        fieldNames = Object.keys(validations) as (keyof T)[]
+        fieldNames = Object.keys(validations) as (keyof T)[];
       }
 
-      let isValid = true
+      let isValid = true;
 
       fieldNames.forEach((field) => {
-        const validation = validateValue(field, data[field])
+        const validation = validateValue(field, data[field]);
         if (validation) {
-          isValid = false
+          isValid = false;
           setErrors((prev) => ({
             ...prev,
-            [field]: validation
-          }))
+            [field]: validation,
+          }));
         }
-      })
+      });
 
-      return isValid
+      return isValid;
     },
-    [data, validateValue, validations]
-  )
+    [data, validateValue, validations],
+  );
 
   const resetData = useCallback(
     (keys: (keyof T)[] = []) => {
       setData((prev) => {
-        if (keys.length === 0) return initialValues
+        if (keys.length === 0) return initialValues;
 
-        const newData = { ...prev }
+        const newData = { ...prev };
 
         keys.forEach((key) => {
-          newData[key] = initialValues[key]
-        })
+          newData[key] = initialValues[key];
+        });
 
-        return newData
-      })
+        return newData;
+      });
     },
-    [initialValues]
-  )
+    [initialValues],
+  );
 
   const resetErrors = useCallback(() => {
-    setErrors(initialErrors)
-  }, [initialErrors])
+    setErrors(initialErrors);
+  }, [initialErrors]);
 
   const handleDataChange = useCallback(
     <K extends object>(newData: K) => {
       const filteredNewData = Object.keys(newData).reduce((acc, key) => {
         if (Object.prototype.hasOwnProperty.call(initialValues, key)) {
-          return { ...acc, [key]: newData[key as keyof K] }
+          return { ...acc, [key]: newData[key as keyof K] };
         }
-        return acc
-      }, {} as Partial<T>)
+        return acc;
+      }, {} as Partial<T>);
 
       setData((prev) => ({
         ...prev,
-        ...filteredNewData
-      }))
+        ...filteredNewData,
+      }));
     },
-    [initialValues]
-  )
+    [initialValues],
+  );
 
   const useFormResult = useMemo(() => {
     return {
@@ -262,8 +264,8 @@ export const useForm = <T extends object>({
       handleErrors,
       handleSubmit,
       resetData,
-      resetErrors
-    }
+      resetErrors,
+    };
   }, [
     data,
     errors,
@@ -277,10 +279,10 @@ export const useForm = <T extends object>({
     isFormValid,
     resetData,
     resetErrors,
-    trigger
-  ])
+    trigger,
+  ]);
 
-  return useFormResult
-}
+  return useFormResult;
+};
 
-export default useForm
+export default useForm;

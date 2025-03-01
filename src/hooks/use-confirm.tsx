@@ -1,50 +1,50 @@
-import { useContext, useEffect } from 'react'
-import { ConfirmationDialogContext } from '~/context/confirm-context'
+import { useContext, useEffect } from "react";
+import { ConfirmationDialogContext } from "~/context/confirm-context";
 
 interface ConfirmationDialogProps {
-  message: string
-  title: string
-  check?: boolean
-  confirmButton?: string
-  cancelButton?: string
+  message: string;
+  title: string;
+  check?: boolean;
+  confirmButton?: string;
+  cancelButton?: string;
 }
 
 interface OpenDialogProps extends ConfirmationDialogProps {
-  sendConfirm: (value: boolean) => void
+  sendConfirm: (value: boolean) => void;
 }
 
 interface UseConfirmResult {
   checkConfirmation: ({
     message,
-    title
-  }: ConfirmationDialogProps) => boolean | Promise<boolean>
-  setNeedConfirmation: (value: boolean) => void
+    title,
+  }: ConfirmationDialogProps) => boolean | Promise<boolean>;
+  setNeedConfirmation: (value: boolean) => void;
   openDialog: ({
     sendConfirm,
     message,
     title,
     confirmButton,
-    cancelButton
-  }: OpenDialogProps) => void
+    cancelButton,
+  }: OpenDialogProps) => void;
 }
 
 const useConfirm = (): UseConfirmResult => {
   const { openDialog, needConfirmation, setNeedConfirmation } = useContext(
-    ConfirmationDialogContext
-  )
+    ConfirmationDialogContext,
+  );
 
   useEffect(() => {
     return () => {
-      setNeedConfirmation(false)
-    }
-  }, [setNeedConfirmation])
+      setNeedConfirmation(false);
+    };
+  }, [setNeedConfirmation]);
 
   const checkConfirmation = ({
     message,
     title,
     confirmButton,
     cancelButton,
-    check
+    check,
   }: ConfirmationDialogProps): boolean | Promise<boolean> => {
     if (needConfirmation || check) {
       return new Promise((res) => {
@@ -53,15 +53,15 @@ const useConfirm = (): UseConfirmResult => {
           message,
           title,
           confirmButton,
-          cancelButton
-        })
-      })
+          cancelButton,
+        });
+      });
     }
 
-    return true
-  }
+    return true;
+  };
 
-  return { checkConfirmation, setNeedConfirmation, openDialog }
-}
+  return { checkConfirmation, setNeedConfirmation, openDialog };
+};
 
-export default useConfirm
+export default useConfirm;

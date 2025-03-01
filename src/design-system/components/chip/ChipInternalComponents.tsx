@@ -1,9 +1,9 @@
-import CircleIcon from '@mui/icons-material/Circle'
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { type CSSProperties, forwardRef, useCallback, useState } from 'react'
+import CircleIcon from "@mui/icons-material/Circle";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { type CSSProperties, forwardRef, useCallback, useState } from "react";
 
-import { cn } from '~/utils/cn'
+import { cn } from "~/utils/cn";
 
 import {
   type BaseChipProps,
@@ -11,50 +11,50 @@ import {
   type InputChipProps,
   type CategoryChipProps,
   type FilterChipProps,
-  type StateChipProps
-} from './types'
+  type StateChipProps,
+} from "./types";
 
-import './Chip.scss'
+import "./Chip.scss";
 
 const ChipContent: React.FC<ChipContentProps> = ({
   endIcon,
   label,
-  startIcon
+  startIcon,
 }) => (
   <>
-    {startIcon && <span className='s2s-startIcon'>{startIcon}</span>}
-    <span className='s2s-label'>{label}</span>
-    {endIcon && <span className='s2s-endIcon'>{endIcon}</span>}
+    {startIcon && <span className="s2s-startIcon">{startIcon}</span>}
+    <span className="s2s-label">{label}</span>
+    {endIcon && <span className="s2s-endIcon">{endIcon}</span>}
   </>
-)
+);
 
 const BaseChip = forwardRef<HTMLDivElement, BaseChipProps>(
   ({ children, className, disabled, size, style, type }, reference) => {
     return (
       <div
         className={cn(
-          's2s-chip',
+          "s2s-chip",
           `s2s-chip--${size}`,
           `s2s-chip--${type}`,
-          disabled && 's2s-disabled',
-          className
+          disabled && "s2s-disabled",
+          className,
         )}
         ref={reference}
         style={style}
       >
         {children}
       </div>
-    )
-  }
-)
+    );
+  },
+);
 
-BaseChip.displayName = 'BaseChip'
+BaseChip.displayName = "BaseChip";
 
 const FilterChip = forwardRef<HTMLDivElement, FilterChipProps>(
   (
     {
       disabled,
-      endIcon = <ExpandMoreIcon style={{ fontSize: 'inherit' }} />,
+      endIcon = <ExpandMoreIcon style={{ fontSize: "inherit" }} />,
       initialIsOpen = false,
       initialSelectedOption = null,
       isOpen: externalIsOpen,
@@ -63,55 +63,56 @@ const FilterChip = forwardRef<HTMLDivElement, FilterChipProps>(
       onSelectedOptionChange,
       options = [],
       selectedOption: externalSelectedOption,
-      size = 'md',
-      startIcon = <CircleIcon style={{ fontSize: 'inherit' }} />,
+      size = "md",
+      startIcon = <CircleIcon style={{ fontSize: "inherit" }} />,
       type,
-      variant = 'filled'
+      variant = "filled",
     },
-    reference
+    reference,
   ) => {
-    const [internalIsOpen, setInternalIsOpen] = useState<boolean>(initialIsOpen)
+    const [internalIsOpen, setInternalIsOpen] =
+      useState<boolean>(initialIsOpen);
     const [internalSelectedOption, setInternalSelectedOption] = useState<
       null | string
-    >(initialSelectedOption)
+    >(initialSelectedOption);
 
-    const isOpenStateControlled = externalIsOpen !== undefined
-    const isSelectedStateControlled = externalSelectedOption !== undefined
+    const isOpenStateControlled = externalIsOpen !== undefined;
+    const isSelectedStateControlled = externalSelectedOption !== undefined;
 
     const handleToggleIsOpen = useCallback(() => {
       if (!isOpenStateControlled) {
-        setInternalIsOpen(!internalIsOpen)
+        setInternalIsOpen(!internalIsOpen);
       }
 
-      onIsOpenChange?.(!(externalIsOpen ?? internalIsOpen))
-    }, [externalIsOpen, internalIsOpen, isOpenStateControlled, onIsOpenChange])
+      onIsOpenChange?.(!(externalIsOpen ?? internalIsOpen));
+    }, [externalIsOpen, internalIsOpen, isOpenStateControlled, onIsOpenChange]);
 
     const handleSelectedChange = useCallback(
       (selectedOption: string) => {
         return () => {
           if (!isSelectedStateControlled) {
-            setInternalSelectedOption(selectedOption)
+            setInternalSelectedOption(selectedOption);
           }
 
-          onSelectedOptionChange?.(selectedOption)
-          handleToggleIsOpen()
-        }
+          onSelectedOptionChange?.(selectedOption);
+          handleToggleIsOpen();
+        };
       },
-      [handleToggleIsOpen, isSelectedStateControlled, onSelectedOptionChange]
-    )
+      [handleToggleIsOpen, isSelectedStateControlled, onSelectedOptionChange],
+    );
 
     const resolvedSelectedOption = isSelectedStateControlled
       ? externalSelectedOption
-      : internalSelectedOption
-    const resolvedIsOpen = externalIsOpen ?? internalIsOpen
+      : internalSelectedOption;
+    const resolvedIsOpen = externalIsOpen ?? internalIsOpen;
 
-    const isSelected = Boolean(resolvedSelectedOption)
+    const isSelected = Boolean(resolvedSelectedOption);
 
     return (
       <BaseChip
         className={cn(
           `s2s-${variant}`,
-          isSelected ? 's2s-selected' : 's2s-unselected'
+          isSelected ? "s2s-selected" : "s2s-unselected",
         )}
         disabled={disabled}
         ref={reference}
@@ -121,9 +122,9 @@ const FilterChip = forwardRef<HTMLDivElement, FilterChipProps>(
         <button
           aria-disabled={disabled}
           aria-expanded={externalIsOpen}
-          aria-haspopup='listbox'
-          className='s2s-dropdown-trigger'
-          data-testid='s2s-dropdown-trigger'
+          aria-haspopup="listbox"
+          className="s2s-dropdown-trigger"
+          data-testid="s2s-dropdown-trigger"
           disabled={disabled}
           onClick={handleToggleIsOpen}
         >
@@ -134,12 +135,13 @@ const FilterChip = forwardRef<HTMLDivElement, FilterChipProps>(
           />
         </button>
         {resolvedIsOpen && !disabled && (
-          <ul className='s2s-dropdown-menu' data-testid='s2s-dropdown-menu'>
+          <ul
+className="s2s-dropdown-menu" data-testid="s2s-dropdown-menu">
             {options.map((option, index) => (
               <li key={`${option}-${index}`}>
                 <button
                   aria-label={option}
-                  className='s2s-dropdown-item'
+                  className="s2s-dropdown-item"
                   onClick={handleSelectedChange(option)}
                 >
                   {option}
@@ -149,35 +151,35 @@ const FilterChip = forwardRef<HTMLDivElement, FilterChipProps>(
           </ul>
         )}
       </BaseChip>
-    )
-  }
-)
+    );
+  },
+);
 
-FilterChip.displayName = 'FilterChip'
+FilterChip.displayName = "FilterChip";
 
 const InputChip = forwardRef<HTMLDivElement, InputChipProps>(
   (
     {
       disabled,
-      endIcon = <CloseRoundedIcon style={{ fontSize: 'inherit' }} />,
+      endIcon = <CloseRoundedIcon style={{ fontSize: "inherit" }} />,
       label,
       onRemoveButtonClick,
-      size = 'md',
-      startIcon = <CircleIcon style={{ fontSize: 'inherit' }} />,
+      size = "md",
+      startIcon = <CircleIcon style={{ fontSize: "inherit" }} />,
       type,
-      variant = 'outlined'
+      variant = "outlined",
     },
-    reference
+    reference,
   ) => {
     const removeButton = (
       <button
-        className='s2s-input-chip-remove-btn'
-        data-testid='s2s-input-chip-remove-btn'
+        className="s2s-input-chip-remove-btn"
+        data-testid="s2s-input-chip-remove-btn"
         onClick={onRemoveButtonClick}
       >
         {endIcon}
       </button>
-    )
+    );
 
     return (
       <BaseChip
@@ -193,29 +195,30 @@ const InputChip = forwardRef<HTMLDivElement, InputChipProps>(
           startIcon={startIcon}
         />
       </BaseChip>
-    )
-  }
-)
+    );
+  },
+);
 
-InputChip.displayName = 'InputChip'
+InputChip.displayName = "InputChip";
 
 const CategoryChip = forwardRef<HTMLDivElement, CategoryChipProps>(
   (
-    { color = 'blue-gray', detail, disabled, label, size = 'md', type },
-    reference
+    { color = "blue-gray", detail, disabled, label, size = "md", type },
+    reference,
   ) => {
     const labelStyle = {
-      '--chip-bg-color': `var(--s2s-${color}-300)`,
-      '--chip-text-color': `var(--s2s-${color}-900)`
-    } as CSSProperties
+      "--chip-bg-color": `var(--s2s-${color}-300)`,
+      "--chip-text-color": `var(--s2s-${color}-900)`,
+    } as CSSProperties;
 
     const detailStyle = {
-      '--chip-bg-color': `var(--s2s-${color}-100)`,
-      '--chip-text-color': `var(--s2s-${color}-900)`
-    } as CSSProperties
+      "--chip-bg-color": `var(--s2s-${color}-100)`,
+      "--chip-text-color": `var(--s2s-${color}-900)`,
+    } as CSSProperties;
 
     return (
-      <div className='s2s-chip-categories' ref={reference}>
+      <div
+className="s2s-chip-categories" ref={reference}>
         <BaseChip
           disabled={disabled}
           size={size}
@@ -233,29 +236,29 @@ const CategoryChip = forwardRef<HTMLDivElement, CategoryChipProps>(
           <ChipContent label={detail} />
         </BaseChip>
       </div>
-    )
-  }
-)
+    );
+  },
+);
 
-CategoryChip.displayName = 'CategoryChip'
+CategoryChip.displayName = "CategoryChip";
 
 const StateChip = forwardRef<HTMLDivElement, StateChipProps>(
   (
     {
-      color = 'blue-gray',
+      color = "blue-gray",
       disabled,
       label,
-      size = 'md',
-      startIcon = <CircleIcon style={{ fontSize: 'inherit' }} />,
-      type
+      size = "md",
+      startIcon = <CircleIcon style={{ fontSize: "inherit" }} />,
+      type,
     },
-    reference
+    reference,
   ) => {
     const style = {
-      '--chip-bg-color': `var(--s2s-${color}-100)`,
-      '--chip-border-color': `var(--s2s-${color}-700)`,
-      '--chip-text-color': `var(--s2s-${color}-700)`
-    } as CSSProperties
+      "--chip-bg-color": `var(--s2s-${color}-100)`,
+      "--chip-border-color": `var(--s2s-${color}-700)`,
+      "--chip-text-color": `var(--s2s-${color}-700)`,
+    } as CSSProperties;
 
     return (
       <BaseChip
@@ -267,10 +270,10 @@ const StateChip = forwardRef<HTMLDivElement, StateChipProps>(
       >
         <ChipContent label={label} startIcon={startIcon} />
       </BaseChip>
-    )
-  }
-)
+    );
+  },
+);
 
-StateChip.displayName = 'StateChip'
+StateChip.displayName = "StateChip";
 
-export { CategoryChip, FilterChip, InputChip, StateChip }
+export { CategoryChip, FilterChip, InputChip, StateChip };

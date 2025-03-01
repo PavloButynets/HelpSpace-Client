@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import svgrPlugin from 'vite-plugin-svgr'
-import tsconfigPaths from 'vite-tsconfig-paths'
-import checker from 'vite-plugin-checker';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import svgrPlugin from "vite-plugin-svgr";
+import tsconfigPaths from "vite-tsconfig-paths";
+import checker from "vite-plugin-checker";
 
-import path from 'path'
+import path from "path";
 
 export default defineConfig({
   plugins: [
@@ -16,39 +16,39 @@ export default defineConfig({
     }),
   ],
   server: {
-    port: 3000,
+    port: 3001,
     open: true,
     host: true,
     proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
+      "/api": {
+        target: "http://localhost:5000",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
-      '/socket.io': {
-        target: 'ws://localhost:8080',
-        ws: true
-      }
-    }
+      "/socket.io": {
+        target: "ws://localhost:8080",
+        ws: true,
+      },
+    },
   },
   esbuild: {
-    loader: 'tsx'
+
   },
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler'
-      }
-    }
+        api: "modern-compiler",
+      },
+    },
   },
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, 'src/'),
-      '~scss': path.resolve(__dirname, 'src/design-system/scss/'),
-      '~scss-components': path.resolve(
-          __dirname,
-          'src/design-system/components/'
-      )
-    }
-  }
-})
+      "~": path.resolve(__dirname, "src/"),
+      "~scss": path.resolve(__dirname, "src/design-system/scss/"),
+      "~scss-components": path.resolve(
+        __dirname,
+        "src/design-system/components/",
+      ),
+    },
+  },
+});

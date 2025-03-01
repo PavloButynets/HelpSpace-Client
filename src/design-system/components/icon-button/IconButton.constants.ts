@@ -1,6 +1,6 @@
 export enum IconButtonVariant {
-  Primary = 'primary',
-  Secondary = 'secondary',
-  Success = 'success',
-  Error = 'error'
+  Primary = "primary",
+  Secondary = "secondary",
+  Success = "success",
+  Error = "error",
 }

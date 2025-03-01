@@ -6,78 +6,81 @@ import {
   useMemo,
   useRef,
   useState,
-  ReactElement
-} from 'react'
-import PopupDialog from '~/components/popup-dialog/PopupDialog'
-import { PaperProps } from '@mui/material/Paper'
+  ReactElement,
+} from "react";
+import PopupDialog from "~/components/popup-dialog/PopupDialog";
+import { PaperProps } from "@mui/material/Paper";
 
 export interface Component {
-  component: ReactElement
-  paperProps?: PaperProps
-  customCloseModal?: () => void
+  component: ReactElement;
+  paperProps?: PaperProps;
+  customCloseModal?: () => void;
 }
 
 interface ModalProvideContext {
-  openModal: (component: Component, delayToClose?: number) => void
-  closeModal: () => void
-  customCloseModal?: () => void
+  openModal: (component: Component, delayToClose?: number) => void;
+  closeModal: () => void;
+  customCloseModal?: () => void;
 }
 
 interface ModalProviderProps {
-  children: ReactElement
+  children: ReactElement;
 }
 
 const ModalContext = createContext<ModalProvideContext>({
-  openModal: () => { console.warn('openModal is not initialized') },
-  closeModal: () => { console.warn('closeModal is not initialized') }
-})
-
+  openModal: () => {
+    console.warn("openModal is not initialized");
+  },
+  closeModal: () => {
+    console.warn("closeModal is not initialized");
+  },
+});
 
 const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
-  const [modal, setModal] = useState<ReactElement | null>(null)
-  const [paperProps, setPaperProps] = useState<PaperProps>({})
-  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null)
-  const customCloseModalRef = useRef<(() => void) | undefined>(null)
+  const [modal, setModal] = useState<ReactElement | null>(null);
+  const [paperProps, setPaperProps] = useState<PaperProps>({});
+  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
+  const customCloseModalRef = useRef<(() => void) | undefined>(null);
 
   const closeModal = useCallback(() => {
-    setModal(null)
-    setPaperProps({})
-    setTimer(null)
-  }, [setModal, setPaperProps, setTimer])
+    setModal(null);
+    setPaperProps({});
+    setTimer(null);
+  }, [setModal, setPaperProps, setTimer]);
 
   const closeModalAfterDelay = useCallback(
     (delay?: number) => {
-      const timerId = setTimeout(closeModal, delay ?? 5000)
-      setTimer(timerId)
+      const timerId = setTimeout(closeModal, delay ?? 5000);
+      setTimer(timerId);
     },
-    [closeModal]
-  )
+    [closeModal],
+  );
 
   const openModal = useCallback(
     (
       { component, paperProps, customCloseModal }: Component,
-      delayToClose?: number
+      delayToClose?: number,
     ) => {
-      setModal(component)
+      setModal(component);
 
-      paperProps && setPaperProps(paperProps)
-      delayToClose && closeModalAfterDelay(delayToClose)
-      customCloseModalRef.current = customCloseModal
+      paperProps && setPaperProps(paperProps);
+      delayToClose && closeModalAfterDelay(delayToClose);
+      customCloseModalRef.current = customCloseModal;
     },
-    [setModal, setPaperProps, closeModalAfterDelay]
-  )
+    [setModal, setPaperProps, closeModalAfterDelay],
+  );
 
   const contextValue = useMemo(
     () => ({ openModal, closeModal }),
-    [closeModal, openModal]
-  )
+    [closeModal, openModal],
+  );
 
   const handleCloseModal = () => {
     if (customCloseModalRef.current) {
-      customCloseModalRef.current()
+      customCloseModalRef.current();
     }
-    closeModal()
-  }
+    closeModal();
+  };
 
   return (
     <ModalContext.Provider value={contextValue}>
@@ -92,9 +95,9 @@ const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
         />
       )}
     </ModalContext.Provider>
-  )
-}
+  );
+};
 
-const useModalContext = () => useContext(ModalContext)
+const useModalContext = () => useContext(ModalContext);
 
-export { ModalProvider, useModalContext }
+export { ModalProvider, useModalContext };
