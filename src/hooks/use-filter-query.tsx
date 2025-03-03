@@ -5,10 +5,6 @@ import { parseQueryParams } from '~/utils/helper-functions'
 
 interface UseFilterQueryOptions<T> {
   defaultFilters: T
-  countActiveFilters?: (
-    searchParams: URLSearchParams,
-    defaultFilters: T
-  ) => number
 }
 
 interface FilterQueryHook<T> {
@@ -20,7 +16,6 @@ interface FilterQueryHook<T> {
 
 export const useFilterQuery = <T extends object>({
   defaultFilters,
-  countActiveFilters
 }: UseFilterQueryOptions<T>): FilterQueryHook<T> => {
   const [searchParams, setSearchParams] = useSearchParams()
   const parsedFilters = parseQueryParams(searchParams, defaultFilters)
@@ -62,11 +57,9 @@ export const useFilterQuery = <T extends object>({
     setSearchParams([])
   }, [setSearchParams])
 
-  const activeFilterCount = countActiveFilters?.(searchParams, defaultFilters)
 
   return {
     filters,
-    activeFilterCount,
     searchParams,
     filterQueryActions: {
       resetFilters,

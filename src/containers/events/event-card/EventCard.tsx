@@ -2,11 +2,11 @@ import { FC } from 'react'
 
 import Box from '@mui/material/Box'
 import UserProfileInfo from '~/components/user-profile-info/UserProfileInfo'
-import OfferDetails from '~/containers/event-card/event-details/OfferDetails'
-import OfferActions from '~/containers/event-card/event-actions/OfferActions'
+import OfferDetails from '~/containers/events/event-card/event-details/OfferDetails'
+import OfferActions from '~/containers/events/event-card/event-actions/OfferActions'
 
-import {ButtonActions, CommonEntityFields, LanguagesEnum} from '~/types'
-import { styles } from '~/containers/event-card/EventCard.styles'
+import { CommonEntityFields } from '~/types'
+import { styles } from '~/containers/events/event-card/EventCard.styles'
 
 export interface Event extends CommonEntityFields {
   _id: string
@@ -44,7 +44,6 @@ const EventCard: FC<EventCardProps> = ({
     description,
     location,
     author,
-    category,
   } = event
 
   return (

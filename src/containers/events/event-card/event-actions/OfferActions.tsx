@@ -8,7 +8,7 @@ import TurnedInNot from '@mui/icons-material/TurnedInNot'
 import {IconButton} from '~/design-system/components/icon-button/IconButton'
 import Button from '~scss-components/button/Button'
 
-import {styles} from '~/containers/event-card/event-actions/OfferActions.styles'
+import {styles} from '~/containers/events/event-card/event-actions/OfferActions.styles'
 import {Link} from "react-router-dom";
 import {userRoutes} from "~/router/constants/userRoutes";
 

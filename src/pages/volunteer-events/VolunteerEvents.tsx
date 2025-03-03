@@ -1,6 +1,6 @@
-import EventContainer, {CardsView} from "~/containers/events-container/EventContainer";
-import React, {useRef, useState} from "react";
-import {Event} from "~/containers/event-card/EventCard";
+import EventContainer from "~/containers/events/events-container/EventContainer";
+import React, {useRef} from "react";
+import {Event} from "~/containers/events/event-card/EventCard";
 import {Box} from "@mui/material";
 import {styles} from "~/pages/volunteer-events/VolunteerEvents.styles";
 import AppDrawer from "~/components/app-drawer/AppDrawer";
@@ -8,10 +8,10 @@ import PageWrapper from "~/containers/page-wrapper/PageWrapper";
 import useBreakpoints from "~/hooks/use-breakpoints";
 import {PositionEnum} from "~/types";
 import {useDrawer} from "~/hooks/use-drawer";
-import FilterBarMenu from "~/containers/events-bar-menu/FilterBarMenu";
 import FiltersToggle from "~/components/filters-toggle/FiltersToggle";
 import {useFilterQuery} from "~/hooks/use-filter-query";
 import { defaultFilters } from "./VolunteerEvents.consts";
+import EventFilterBlock from "~/containers/events/event-filter-block/EventFilterBlock";
 
 const events: Event[] = [
     {
@@ -89,14 +89,15 @@ const events: Event[] = [
 
 
 const VolunteerEvents = () => {
-    const [cardsView, setCardsView] = useState<CardsView>('inline')
     const { isMobile, isLaptopAndAbove } = useBreakpoints()
     const targetBlock = useRef<HTMLDivElement>(null)
     const toggleFiltersOpen = () => (isOpen ? closeDrawer() : openDrawer())
 
-    const { filters, activeFilterCount, searchParams, filterQueryActions } =
+    const defaultParams = { page: defaultFilters().page }
+
+    const { filters, activeFilterCount,  filterQueryActions } =
         useFilterQuery({
-            defaultFilters: defaultFilters()
+            defaultFilters: defaultFilters(),
         })
     const { openDrawer, closeDrawer, isOpen } = useDrawer()
 
@@ -110,27 +111,24 @@ const VolunteerEvents = () => {
                 />
             </Box>
             <Box sx={styles.filterSection}>
-                {/*<AppDrawer*/}
-                {/*    anchor={isLaptopAndAbove ? PositionEnum.Left : PositionEnum.Right}*/}
-                {/*    onClose={closeDrawer}*/}
-                {/*    open={isOpen}*/}
-                {/*>*/}
-                {/*    <OfferFilterBlock*/}
-                {/*        activeFilterCount={activeFilterCount}*/}
-                {/*        additionalParams={defaultParams}*/}
-                {/*        closeFilters={closeDrawer}*/}
-                {/*        filterActions={filterQueryActions}*/}
-                {/*        filters={filters}*/}
-                {/*        onToggleTutorOffers={handleShowingTutorOffers}*/}
-                {/*        open={isOpen}*/}
-                {/*        price={price}*/}
-                {/*    />*/}
-                {/*</AppDrawer>*/}
+                <AppDrawer
+                    anchor={isLaptopAndAbove ? PositionEnum.Left : PositionEnum.Right}
+                    onClose={closeDrawer}
+                    open={isOpen}
+                >
+                    <EventFilterBlock
+                        activeFilterCount={activeFilterCount}
+                        additionalParams={defaultParams}
+                        closeFilters={closeDrawer}
+                        filterActions={filterQueryActions}
+                        filters={filters}
+                        open={isOpen}
+                    />
+                </AppDrawer>
                 <EventContainer
                     eventCards={events}
                     updateEventsInfo={() => {
                     }}
-                    viewMode={cardsView}
                 />
             </Box>
         </PageWrapper>

@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
-import { styles } from '~/containers/event-card/event-details/OfferDetails.styles'
+import { styles } from '~/containers/events/event-card/event-details/OfferDetails.styles'
 import PlaceIcon from "@mui/icons-material/Place";
 
 interface EventDetailsProps {

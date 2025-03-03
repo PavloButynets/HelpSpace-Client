@@ -7,13 +7,12 @@ import TurnedIn from '@mui/icons-material/TurnedIn'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 
-import { IconButton } from '~/design-system/components/icon-button/IconButton'
+import { IconButton } from '~scss-components/icon-button/IconButton'
 import Button from '~scss-components/button/Button'
 import UserProfileInfo from '~/components/user-profile-info/UserProfileInfo'
-import TitleWithDescripiton from '~/components/title-with-description/TitleWithDescription'
 
-import { Event } from '~/containers/event-card/EventCard'
-import { styles } from '~/containers/event-card-square/EventCardSquare.styles'
+import { Event } from '~/containers/events/event-card/EventCard'
+import { styles } from '~/containers/events/event-card-square/EventCardSquare.styles'
 import {Link} from "react-router-dom";
 import {userRoutes} from "~/router/constants/userRoutes";
 
@@ -32,10 +31,8 @@ const EventCardSquare: FC<OfferCardSquareProps> = ({
 
   const {
     _id,
-    price,
     author,
     title,
-    location
   } = event
 
 
