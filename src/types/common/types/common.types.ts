@@ -14,3 +14,4 @@ export type SwitchOptions = {
   [key in "left" | "right"]?: SwitchContent;
 };
 export type Crumbfunc = (data: unknown) => Crumb;
+export type HttpMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE'

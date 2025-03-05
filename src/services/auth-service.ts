@@ -14,6 +14,7 @@ import {
   SignupParams,
   SignupResponse,
 } from "~/types";
+import {baseService} from "~/services/base-service";
 
 const { POST } = ApiMethodEnum;
 
@@ -21,9 +22,12 @@ export const AuthService = {
   refresh: (): Promise<AxiosResponse<LoginResponse>> => {
     return axiosClient.get(URLs.auth.refresh);
   },
-  confirmEmail: (confirmToken: string): Promise<AxiosResponse> => {
+  confirmEmail: (confirmToken: string)  => {
     const confirmUrl = createUrlPath(URLs.auth.confirm, confirmToken);
-    return axiosClient.get(confirmUrl);
+    return baseService.request({
+        url: confirmUrl,
+        method: 'GET',
+    });
   },
   forgotPassword: (userEmail: string): Promise<AxiosResponse> => {
     return axiosClient.post(URLs.auth.forgotPassword, userEmail);

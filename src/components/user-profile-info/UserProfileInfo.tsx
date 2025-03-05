@@ -55,7 +55,6 @@ const UserProfileInfo: FC<UserProfileInfoProps> = ({
   const handleLinkClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.stopPropagation()
   }
-  console.log(photo)
   const avatar = (
     <AvatarIcon
       firstName={firstName}

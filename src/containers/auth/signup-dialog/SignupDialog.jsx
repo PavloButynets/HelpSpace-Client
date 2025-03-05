@@ -59,7 +59,6 @@ const SignupDialog = () => {
             5000
           )
         } catch (e) {
-            console.log(e)
           dispatch(
             openAlert({
               severity: snackbarVariants.error,

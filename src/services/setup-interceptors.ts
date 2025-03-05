@@ -23,7 +23,6 @@ export const setupInterceptors = (): void => {
 
   axiosClient.interceptors.response.use(
     (response: AxiosResponse) => {
-      console.log(response.data);
       return response;
     },
     async (error: AxiosResponseError) => {
