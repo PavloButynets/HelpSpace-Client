@@ -5,12 +5,38 @@ export const styles = {
   root: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px'
+    gap: '20px',
+    minWidth: 0
+  },
+  left: {
+    marginTop: '8px',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: '12px',
+    width: '100%',
+    '& > div': {
+      flex: '1 1 auto',
+      minWidth: 0,
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: '8px',
+      '& > a': {
+        maxWidth: 'fit-content',
+        minWidth: 0,
+        '& > p': {
+          whiteSpace: 'nowrap',
+
+        }
+      }
+    }
+  },
+  top: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   info: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '4px'
   },
   avatar: {
     height: '48px',
@@ -36,7 +62,7 @@ export const styles = {
     typography: TypographyVariantEnum.Button,
     '&:hover': {
       textDecoration: 'underline',
-      textDecorationColor: palette.primary[300]
+      textDecorationColor: palette.text.disabled
     }
   },
   rating: {

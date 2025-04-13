@@ -16,7 +16,7 @@ import TitleWithDescription from '~/components/title-with-description/TitleWithD
 import NotificationModal from '~/containers/notification-modal/NotificationModal'
 import { styles } from '~/containers/auth/forgot-password/ForgotPassword.styles'
 
-import info from '~/assets/img/guest-home-page/info.svg'
+import info from '~/assets/img/info.svg'
 //import { AuthService } from '~/services/auth-service'
 import { snackbarVariants } from '~/constants'
 import { email } from '~/utils/validations/login'

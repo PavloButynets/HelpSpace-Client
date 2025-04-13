@@ -15,3 +15,10 @@ export type SwitchOptions = {
 };
 export type Crumbfunc = (data: unknown) => Crumb;
 export type HttpMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE'
+export type PaginatedResponse<T> = {
+  items: T[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}

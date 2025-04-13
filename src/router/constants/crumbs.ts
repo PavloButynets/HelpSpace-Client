@@ -15,3 +15,8 @@ export const needHelpPage = {
     name: "breadCrumbs.needHelp",
     path: userRoutes.navBar.needHelpPage.route,
 }
+
+export const eventDetails = {
+    name: 'breadCrumbs.eventDetails',
+    path: userRoutes.events.eventDetails.route,
+}

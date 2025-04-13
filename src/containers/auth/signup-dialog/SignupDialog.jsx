@@ -20,8 +20,8 @@ import { signup, snackbarVariants } from '~/constants/common.js'
 import GoogleLogin from '~/containers/auth/google-login/GoogleLogin'
 import NotificationModal from '~/containers/notification-modal/NotificationModal'
 
-import signupImg from '~/assets/img/signup-dialog/signup.jpg'
-import info from '~/assets/img/guest-home-page/info.svg'
+import signupImg from '~/assets/img/signup.png'
+import info from '~/assets/img/info.svg'
 
 
 import { styles } from '~/containers/auth/signup-dialog/SignupDialog.styles'

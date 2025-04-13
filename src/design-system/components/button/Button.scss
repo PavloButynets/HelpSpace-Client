@@ -71,25 +71,25 @@
 
   &-primary {
     @include button-variant(
-      $background: get-var('blue-gray-800'),
+      $background: get-var('custom-green-500'),
       $color: get-var('neutral-50'),
       $shadow: get-var('box-shadow-xl'),
-      $hover-background: get-var('blue-gray-700'),
+      $hover-background: get-var('custom-green-700'),
       $hover-shadow: get-var('box-shadow-2xl'),
-      $active-background: get-var('blue-gray-500'),
+      $active-background: get-var('custom-green-700'),
       $disabled-background: get-var('blue-gray-50'),
-      $disabled-color: get-var('blue-gray-300')
+      $disabled-color: get-var('custom-green-200')
     );
   }
 
   &-tonal {
     @include button-variant(
-      $background: get-var('blue-gray-50'),
+      $background: get-var('yellow-100'),
       $color: get-var('blue-gray-800'),
       $shadow: get-var('box-shadow-xs'),
-      $hover-background: get-var('blue-gray-100'),
+      $hover-background: get-var('yellow-200'),
       $hover-shadow: get-var('box-shadow-xs'),
-      $active-background: get-var('blue-gray-300'),
+      $active-background: get-var('yellow-200'),
       $disabled-background: get-var('blue-gray-50'),
       $disabled-color: get-var('blue-gray-300')
     );

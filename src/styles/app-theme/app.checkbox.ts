@@ -4,9 +4,9 @@ import palette from "./app.pallete";
 export const checkbox = {
   styleOverrides: {
     root: {
-      color: palette.primary[300],
+      color: palette.text.disabled,
       [`&.${checkboxClasses.checked}`]: {
-        color: palette.primary[700],
+        color: palette.text.secondary,
       },
     },
   },

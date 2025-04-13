@@ -1,5 +1,6 @@
 export const styles = {
   wrapper: {
+    position: 'relative',
     width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
@@ -16,10 +17,22 @@ export const styles = {
       maxWidth: '112px'
     },
     avatar: {
-      width: '80px',
-      height: '80px',
+      width: '40px',
+      height: '40px',
       alignSelf: 'center',
       mb: '12px'
-    }
-  }
+    },
+  },
+  eventPhoto: {
+    width: 250,
+    aspectRatio: '1',
+    objectFit: 'cover',
+    borderRadius: 2,
+    marginLeft: 'auto',
+  },
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+  },
 }

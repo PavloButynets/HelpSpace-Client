@@ -40,6 +40,7 @@ export const styles = {
   listItem: { py: "5px" },
   navItemText: (isActive = false) => ({
     ...navItem,
+    color: isActive ? "text.secondary" : "text.secondary",
     textDecoration: isActive ? "underline" : "none",
     "&:focus": { textDecoration: "underline" },
   }),

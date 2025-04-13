@@ -114,7 +114,7 @@ onClose={closeDrawer} open={isOpen}
             onClick={openLoginDialog}
             size="md"
             sx={styles.loginButton}
-            variant={"tonal"}
+            variant={"primary"}
           >
             Увійти
           </Button>

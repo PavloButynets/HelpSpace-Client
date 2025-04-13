@@ -11,6 +11,6 @@ export const styles = {
     pr: "12px",
   },
   logoutItem: {
-    borderTop: `1px solid ${palette.basic.lightGray}`,
+    borderTop: `1px solid #CFD8DC`,
   },
 };

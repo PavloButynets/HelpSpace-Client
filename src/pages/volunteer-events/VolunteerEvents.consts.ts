@@ -1,8 +1,10 @@
 import { EventFilters } from '~/types'
 
 export const defaultFilters = (): EventFilters => ({
-    category: '',
-    location: '',
+    categories: [],
+    eventDate: '',
+    showCompleted: false,
+    city: '',
     sort: 'createdAt',
     search: '',
     page: '1'
@@ -10,4 +12,4 @@ export const defaultFilters = (): EventFilters => ({
 
 export const defaultResponse = { items: [], count: 0 }
 
-export const itemsPerPage = 8
+export const itemsPerPage = 10

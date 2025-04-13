@@ -2,7 +2,7 @@ import { UserRole } from "~/types";
 import { SxProps } from '@mui/material'
 
 export interface UserResponse {
-  _id: string
+  id: string
   role: UserRole[]
   firstName: string
   lastName: string

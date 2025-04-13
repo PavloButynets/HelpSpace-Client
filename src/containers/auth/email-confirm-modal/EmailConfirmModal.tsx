@@ -10,8 +10,8 @@ import ImgTitleDescription from '~/components/img-title-description/ImgTitleDesc
 import LoginDialog from '~/containers/auth/login-dialog/LoginDialog'
 import {styles} from '~/containers/auth/email-confirm-modal/EmailConfirmModal.styles'
 
-import imgSuccess from '~/assets/img/email-confirmation-modals/success-icon.svg'
-import imgReject from '~/assets/img/email-confirmation-modals/not-success-icon.svg'
+import imgSuccess from '~/assets/img/success-icon.svg'
+import imgReject from '~/assets/img/not-success-icon.svg'
 
 import {AuthService} from '~/services/auth-service'
 import {Component, useModalContext} from '~/context/modal-context'

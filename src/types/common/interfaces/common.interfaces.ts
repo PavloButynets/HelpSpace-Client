@@ -25,7 +25,7 @@ export interface ItemsWithCount<T> {
   items: T[];
 }
 export interface CommonEntityFields {
-  _id: string;
+  id: string;
   createdAt: string;
   updatedAt: string;
 }

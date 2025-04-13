@@ -16,7 +16,7 @@ import { styles } from "~/containers/navigation-icons/NavigationIcons.styles";
 import { createUrlPath } from "~/utils/helper-functions";
 //import { isUpdatedPhoto } from '~/utils/is-updated-photo'
 
-import avatar from "~/assets/img/user-profile-page/avatar.png";
+import avatar from "~/assets/img/user-avatar.png";
 interface AccountIconProps {
   openMenu: (event: MouseEvent) => void;
 }

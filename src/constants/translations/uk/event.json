@@ -1,0 +1,100 @@
+{
+  "categories": {
+    "Clothing": "Одяг",
+    "Food": "Їжа",
+    "Medical": "Медицина",
+    "Education": "Освіта",
+    "Hygiene": "Гігієна",
+    "Household": "Побутові товари",
+    "Elderly": "Люди похилого віку",
+    "Refugees": "Вимушено переміщені особи",
+    "Emergency": "Надзвичайні ситуації",
+    "Shelter": "Притулок",
+    "Children": "Діти",
+    "Animals": "Тварини",
+    "Community": "Спільнота",
+    "Charity": "Благодійність",
+    "Disaster Relief": "Допомога при стихійних лихах",
+    "Ecology": "Екологія",
+    "Transport": "Транспорт",
+    "Mental Health": "Психічне здоров'я"
+  },
+  "eventDetails": {
+    "placesAvailable": "Доступно місць",
+    "registrationDeadline": "Реєстрація відкрита до",
+    "eventDescription": "Опис події",
+    "eventRequirements": "Що потрібно від волонтерів",
+    "eventBenefits": "Що отримають волонтери",
+    "eventTasks": "Завдання для волонтерів",
+    "eventOrganizer": "Організатор",
+    "eventLocation": "Місце",
+    "eventDate": "Дата",
+    "eventTime": "Час",
+    "volunteers": "Волонтери",
+    "showVolunteers": "Показати волонтерів",
+    "informationAboutEvent": "Інформація про подію"
+  },
+  "registerAsVolunteer": "Зареєструватися як волонтер",
+  "saveToBookmarks": "Зберегти",
+  "share": "Поділитися",
+  "eventStatus": {
+    "NEW": "Майбутня подія",
+    "ONGOING": "Активна подія",
+    "COMPLETED": "Завершена подія",
+    "CANCELED": "Скасована подія"
+  },
+  "filters": {
+    "location": "Місце",
+    "selectLocation": "Виберіть місце",
+    "categories": "Категорії",
+    "selectCategories": "Виберіть категорії",
+    "eventDate": "Дата події",
+    "selectDate": "Виберіть дату",
+    "showCompleted": "Показати завершені події",
+    "title": "Фільтри"
+  },
+  "eventCreating": {
+    "title": "Запит на волонтерську допомогу",
+    "howItWorks": "Як це працює",
+    "description": "Потрібна допомога з проектом або подією? Надішліть ваш запит тут, і ми зв'яжемо вас з волонтерами, які можуть допомогти.",
+    "process": "Процес простий:",
+    "steps": [
+      "Заповніть форму з деталями вашої події чи проекту",
+      "Наші модератори перевірять ваш запит (зазвичай протягом 24 годин)",
+      "Після затвердження ваша подія стане видимою для потенційних волонтерів",
+      "Ви будете сповіщені, коли волонтери зареєструються на допомогу"
+    ],
+    "backButton": "Назад",
+    "nextButton": "Далі",
+    "submitButton": "Створити подію",
+    "submittingButton": "Надсилається...",
+    "stepsLabels": {
+      "eventInformation": "Інформація про подію",
+      "eventDetails": "Деталі події",
+      "review": "Перегляд"
+    },
+    "fields": {
+      "title": "Назва події",
+      "city": "Місто",
+      "address": "Адреса",
+      "startDate": "Дата початку",
+      "endDate": "Дата завершення",
+      "categories": "Категорії",
+      "volunteerSlots": "Кількість волонтерів",
+      "registrationDeadline": "Дедлайн реєстрації",
+      "description": "Опис події",
+      "coverImage": "Обкладинка",
+      "uploadImage": "Завантажити зображення",
+      "removeImage": "Видалити",
+      "imageRecommendations": "Рекомендований розмір: 1200 x 600 пікселів. Макс. розмір файлу: 5MB",
+      "moderationNotice": "Ваша подія буде перевірена модератором перед тим, як стати видимою для спільноти.",
+       "imagePreviewAlt": "Перегляд {{fileName}}",
+       "checkInformation": "Перевірте інформацію про подію"
+    },
+    "success": {
+      "title": "Дякуємо за вашу заявку!",
+      "message": "Ваш запит на подію успішно надіслано та очікує на схвалення модераторами. Ви отримаєте сповіщення, коли вашу подію буде схвалено.",
+      "viewEventsButton": "Переглянути всі події"
+    }
+  }
+}

@@ -27,4 +27,7 @@ export const styles = {
     typography: TypographyVariantEnum.Button,
     cursor: "pointer",
   },
+  icon: {
+    color: "text.primary",
+  }
 };

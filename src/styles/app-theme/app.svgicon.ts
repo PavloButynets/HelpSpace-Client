@@ -3,13 +3,13 @@ import palette from "./app.pallete";
 export const svgIcon = {
   styleOverrides: {
     colorPrimary: {
-      color: palette.primary[900],
+      color: palette.text.primary,
     },
     colorSecondary: {
-      color: palette.primary[700],
+      color: palette.text.secondary,
     },
     colorDisabled: {
-      color: palette.primary[100],
+      color: palette.text.disabled,
     },
   },
 };

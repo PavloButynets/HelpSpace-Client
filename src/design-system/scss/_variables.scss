@@ -1,4 +1,4 @@
-$prefix: 's2s-';
+$prefix: 'help-space-';
 
 /*=============================================
  =                   COLORS                    =
@@ -100,6 +100,31 @@ $greens: (
   700: $green-700,
   800: $green-800,
   900: $green-900
+) !default;
+
+/* Custom green colors */
+$custom-green-50: #edf8f4 !default;
+$custom-green-100: #d3ede3 !default;
+$custom-green-200: #a7dcc7 !default;
+$custom-green-300: #7ccbab !default;
+$custom-green-400: #4BBF8D !default; /* Base color */
+$custom-green-500: #3ca376 !default;
+$custom-green-600: #2d8860 !default;
+$custom-green-700: #1f6c49 !default;
+$custom-green-800: #115133 !default;
+$custom-green-900: #03351c !default;
+
+$custom-greens: (
+        50: $custom-green-50,
+        100: $custom-green-100,
+        200: $custom-green-200,
+        300: $custom-green-300,
+        400: $custom-green-400,
+        500: $custom-green-500,
+        600: $custom-green-600,
+        700: $custom-green-700,
+        800: $custom-green-800,
+        900: $custom-green-900
 ) !default;
 
 $yellow-50: #fcf9ee !default;

@@ -22,6 +22,7 @@ import filters from "./filters.json";
 import chatPage from "./chat.json";
 import editProfilePage from "./edit-profile.json";
 import categories from "./categories.json";
+import event from "./event.json";
 
 const en = {
   translations: {
@@ -49,6 +50,7 @@ const en = {
     chatPage,
     editProfilePage,
     categories,
+    event,
   },
 };
 

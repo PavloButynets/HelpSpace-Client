@@ -8,7 +8,7 @@ import Button from '~scss-components/button/Button'
 import TitleWithDescription from '~/components/title-with-description/TitleWithDescription'
 
 import { guestRoutes } from '~/router/constants/guestRoutes'
-import error401 from '~/assets/img/error-page/401.svg'
+import error401 from '~/assets/img/401.svg'
 
 import { styles } from '~/pages/error/styles/AuthPolicy.styles'
 

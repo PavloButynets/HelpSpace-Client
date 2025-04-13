@@ -11,7 +11,7 @@
   @include register-vars($purples, 'purple');
   @include register-vars($reds, 'red');
   @include register-vars($neutrals, 'neutral');
-
+  @include register-vars($custom-greens, 'custom-green');
   // Breakpoints
   @include register-vars($breakpoints, 'breakpoint');
 

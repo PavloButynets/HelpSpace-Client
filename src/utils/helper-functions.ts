@@ -165,3 +165,9 @@ export const parseQueryParams = <T extends object>(
 
     return result
 }
+export const normalizeArrayValue = <T>(value: T | T[] | null | undefined): T[] => {
+    if (!value) return [];
+    if (Array.isArray(value)) return value;
+    if (typeof value === 'string' && value.includes(',')) return value.split(',') as T[];
+    return [value];
+};

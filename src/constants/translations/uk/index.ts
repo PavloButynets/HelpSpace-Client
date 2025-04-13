@@ -21,7 +21,7 @@ import guestHomePage from "./guest-home-page.json";
 import table from "./table.json";
 import editProfilePage from "./edit-profile.json";
 import categories from "./categories.json";
-
+import event from "./event.json";
 const uk = {
   translations: {
     common,
@@ -47,6 +47,7 @@ const uk = {
     table,
     editProfilePage,
     categories,
+    event,
   },
 };
 

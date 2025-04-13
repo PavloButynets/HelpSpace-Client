@@ -58,7 +58,7 @@ color="inherit" data-testid="loader" size={25} />
     const content = (
       <>
         {startIcon}
-        <span className="s2s-btn-label">{children}</span>
+        <span className="help-space-label">{children}</span>
         {endIcon}
       </>
     );
@@ -66,10 +66,10 @@ color="inherit" data-testid="loader" size={25} />
     return (
       <MuiButton
         className={cn(
-          "s2s-btn",
-          `s2s-btn-${size}`,
-          `s2s-btn-${variant}`,
-          isDisabled && "s2s-btn-disabled",
+          "help-space-btn",
+          `help-space-btn-${size}`,
+          `help-space-btn-${variant}`,
+          isDisabled && "help-space-btn-disabled",
           className,
         )}
         disabled={isDisabled}
@@ -79,8 +79,8 @@ color="inherit" data-testid="loader" size={25} />
       >
         {loading ? (
           <>
-            <span className="s2s-btn-hidden-content">{content}</span>
-            <span className="s2s-btn-loader">{loader}</span>
+            <span className="help-space-btn-hidden-content">{content}</span>
+            <span className="help-space-btn-loader">{loader}</span>
           </>
         ) : (
           content

@@ -4,7 +4,7 @@ const table = {
   styleOverrides: {
     root: {
       "&.MuiTableRow-hover:hover": {
-        backgroundColor: palette.basic.grey,
+        backgroundColor: '#B0BEC5',
       },
       "& .MuiTableCell-root": {
         borderBottom: "none",

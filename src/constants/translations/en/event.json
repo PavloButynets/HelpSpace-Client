@@ -1,0 +1,98 @@
+{
+  "categories": {
+    "Food": "Food",
+    "Medical": "Medical",
+    "Education": "Education",
+    "Clothing": "Clothing",
+    "Elderly": "Elderly",
+    "Refugees": "Refugees",
+    "Emergency": "Emergency",
+    "Shelter": "Shelter",
+    "Children": "Children",
+    "Animals": "Animals",
+    "Community": "Community",
+    "Charity": "Charity",
+    "Disaster Relief": "Disaster Relief",
+    "Ecology": "Ecology",
+    "Transport": "Transport",
+    "Mental Health": "Mental Health"
+  },
+  "eventDetails": {
+    "placesAvailable": "Places Available",
+    "registrationDeadline": "Registration Open Until",
+    "eventDescription": "Event Description",
+    "eventRequirements": "Volunteer Requirements",
+    "eventBenefits": "Volunteer Benefits",
+    "eventTasks": "Volunteer Tasks",
+    "eventOrganizer": "Organizer",
+    "eventLocation": "Location",
+    "eventDate": "Date",
+    "eventTime": "Time",
+    "volunteers": "Volunteers",
+    "showVolunteers": "Show Volunteers",
+    "informationAboutEvent": "Event Information"
+  },
+  "registerAsVolunteer": "Register as Volunteer",
+  "saveToBookmarks": "Save",
+  "share": "Share",
+  "eventStatus": {
+    "NEW": "Upcoming Event",
+    "ONGOING": "Ongoing Event",
+    "COMPLETED": "Completed Event",
+    "CANCELED": "Canceled Event"
+  },
+  "filters": {
+    "location": "Location",
+    "selectLocation": "Select Location",
+    "categories": "Categories",
+    "selectCategories": "Select Categories",
+    "eventDate": "Event Date",
+    "selectDate": "Select Date",
+    "showCompleted": "Show Completed Events",
+    "title": "Filters"
+  },
+  "eventCreating": {
+    "title": "Request Volunteer Help",
+  "howItWorks": "How It Works",
+  "description": "Need assistance with a project or event? Submit your request here, and we'll connect you with volunteers who can help.",
+  "process": "The process is simple:",
+  "steps": [
+    "Fill out the form with details about your event or project",
+    "Our moderators will review your request (usually within 24 hours)",
+    "Once approved, your event will be visible to potential volunteers",
+    "You'll be notified when volunteers sign up to help"
+  ],
+  "backButton": "Back",
+  "nextButton": "Next",
+  "submitButton": "Submit Event",
+  "submittingButton": "Submitting...",
+  "stepsLabels": {
+      "eventInformation": "Information about the Event",
+      "eventDetails": "Event Details",
+      "review": "Review"
+    },
+    "fields": {
+      "title": "Event Title",
+      "city": "City",
+      "address": "Address",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "categories": "Categories",
+      "volunteerSlots": "Number of Volunteer Slots",
+      "registrationDeadline": "Registration Deadline",
+      "description": "Event Description",
+      "coverImage": "Cover Image",
+      "uploadImage": "Upload Image",
+      "removeImage": "Remove",
+      "imageRecommendations": "Recommended size: 1200 x 600 pixels. Max file size: 5MB",
+      "moderationNotice": "Your event will be reviewed by a moderator before it becomes visible to the community.",
+      "imagePreviewAlt": "Preview {{fileName}}",
+      "checkInformation": "Check Event Information"
+    },
+    "success": {
+      "title": "Thank You For Your Submission!",
+      "message": "Your event request has been submitted successfully and is now pending approval from our moderators. You will be notified once your event is approved.",
+      "viewEventsButton": "View All Events"
+    }
+  }
+}

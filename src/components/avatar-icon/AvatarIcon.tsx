@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import UserAvatar from '~/design-system/components/user-avatar/UserAvatar'
-import { SxProps } from '@mui/system'
+import { SxProps } from '@mui/material'
 import { getInitials, spliceSx } from '~/utils/helper-functions'
 import { styles } from '~/components/avatar-icon/AvatarIcon.styles'
 

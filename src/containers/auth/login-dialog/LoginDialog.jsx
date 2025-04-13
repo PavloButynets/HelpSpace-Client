@@ -9,7 +9,7 @@ import {useLoginMutation} from '~/services/auth-service'
 import {useModalContext} from '~/context/modal-context.js'
 import {useAppDispatch} from '~/hooks/use-redux'
 import {email, logInPassword} from '~/utils/validations/login'
-import loginImg from '~/assets/img/login-dialog/login.jpg'
+import loginImg from '~/assets/img/login.png'
 import {login, snackbarVariants} from '~/constants/common.js'
 
 import styles from '~/containers/auth/login-dialog/LoginDialog.styles'
