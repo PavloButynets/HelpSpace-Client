@@ -2,7 +2,13 @@ import type React from "react"
 
 import { useState } from "react"
 import { Box, Button, Card, CardActions, CardContent, Chip, Link, Tab, Tabs, Typography } from "@mui/material"
-import { CalendarMonth, LocationOn, People } from "@mui/icons-material"
+import { CalendarMonth, LocationOn } from "@mui/icons-material"
+import {VolunteerEvent} from "~/services/user-service"
+import { Link as RouterLink } from 'react-router-dom'; // Додайте цей імпорт!
+
+import { Event } from "~/types"
+import { userRoutes } from "~/router/constants/userRoutes"
+import { authRoutes } from "~/router/constants/authRoutes"
 
 // Mock data for events
 const MOCK_EVENTS = {
@@ -104,6 +110,8 @@ function getStatusChipColor(status: string) {
       return "primary"
     case "COMPLETED":
       return "default"
+    case "CANCELED":
+      return "error"
     default:
       return "default"
   }
@@ -132,14 +140,17 @@ function TabPanel(props: TabPanelProps) {
 }
 
 interface UserEventsProps {
-  userId: string
+  events: {
+    created: VolunteerEvent[]
+    participated: VolunteerEvent[]
+  }
 }
 
-export default function UserEvents({ userId }: UserEventsProps) {
+export default function UserEvents({ events }: UserEventsProps) {
   const [tabValue, setTabValue] = useState(0)
-
+  console.log(events)
   // In a real app, you would fetch events based on the userId
-  const events = MOCK_EVENTS
+  //const events = MOCK_EVENTS
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
@@ -182,7 +193,7 @@ export default function UserEvents({ userId }: UserEventsProps) {
 }
 
 interface EventCardProps {
-  event: any
+  event: VolunteerEvent
   showCreator: boolean
 }
 
@@ -219,34 +230,32 @@ function EventCard({ event, showCreator }: EventCardProps) {
             <Typography variant="body2">{event.city}</Typography>
           </Box>
 
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <People fontSize="small" sx={{ mr: 1, color: "text.secondary" }} />
-            <Typography variant="body2">
-              {event.participantsCount} / {event.volunteerSlots} volunteers
-            </Typography>
-          </Box>
-
           {showCreator && event.creator && (
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography color="text.secondary" sx={{ mr: 1 }} variant="body2">
                 Organized by:
               </Typography>
               <Link fontWeight="medium" href={`/users/${event.creator.id}`} underline="hover" variant="body2">
-                {event.creator.name}
+                {event.creator.firstName} {event.creator.lastName}
               </Link>
             </Box>
           )}
         </Box>
 
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-          {event.categories.map((category: string) => (
-            <Chip key={category} label={category} size="small" variant="outlined" />
+          {event.categories.map((category: {id: string, name: string}) => (
+            <Chip key={category.id} label={category.name} size="small" variant="outlined" />
           ))}
         </Box>
       </CardContent>
 
       <CardActions>
-        <Button component={Link} fullWidth href={`/events/${event.id}`} variant="contained">
+        <Button 
+        component={RouterLink} 
+        fullWidth   
+        to={`${userRoutes.events.eventDetails.path}/${event.id}`} 
+        variant="contained"
+        >
           View Event Details
         </Button>
       </CardActions>

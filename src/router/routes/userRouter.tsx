@@ -10,6 +10,7 @@ import VolunteerEvents from "~/pages/volunteer-events/VolunteerEvents";
 const NeedHelp = lazy(() => import('~/pages/need-help/NeedHelp'))
 const EventDetails = lazy(() => import('~/pages/event-details/EventDetails'))
 const UserProfile = lazy(() => import('~/pages/user-profile/UserProfile'))
+const MyEvents = lazy(() => import('~/pages/my-events/MyEvents'))
 export const userRouter = (
     <Route
         element={<PrivateRoute role={[UserRoleEnum.Admin, UserRoleEnum.Moderator, UserRoleEnum.User]}/>}
@@ -33,6 +34,10 @@ export const userRouter = (
         <Route
             element={<UserProfile />}
             path={userRoutes.userProfilePage.route}
+        />
+        <Route
+        element={<MyEvents/>}
+        path={userRoutes.events.myEvents.route}
         />
     </Route>
 )

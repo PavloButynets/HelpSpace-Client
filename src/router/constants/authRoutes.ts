@@ -9,9 +9,9 @@ export const authRoutes = {
     },
     user: {
       myProfile: { route: "my-profile", path: "/my-profile" },
-      myRequests: {
-        route: "my-requests",
-        path: "/my-requests",
+      myEvents: {
+        route: "my-events",
+        path: "/my-events",
       },
       logout: { route: "logout", path: "/logout" },
     },

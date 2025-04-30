@@ -9,9 +9,7 @@
   "faq": "FAQ",
   "loginButton": "Login",
   "my-profile": "Profile",
-  "my-courses": "My courses",
-  "my-offers": "My offers",
-  "my-requests": "My requests",
+  "my-events": "My events",
   "logout": "Log out",
   "notifications": {
     "emptyNotifications": "No notification yet",

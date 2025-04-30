@@ -43,6 +43,23 @@
     "COMPLETED": "Завершена подія",
     "CANCELED": "Скасована подія"
   },
+  "status": {
+    "pending": "Очікує розгляду",
+    "accepted": "Прийнята",
+    "rejected": "Відхилена"
+  },
+  "applicant": {
+    "acceptSuccess": "Заявку успішно прийнято",
+    "acceptError": "Помилка прийняття заявки",
+    "rejectSuccess": "Заявку відхилено",
+    "rejectError": "Помилка відхилення заявки"
+  },
+  "applicants": "Заявок: {{count}}",
+  "showApplicants": "Показати заявки",
+  "hideApplicants": "Приховати заявки",
+  "noApplicants": "Заявок ще немає",
+  "noPendingApplicants": "Немає заявок, що очікують розгляду",
+  "volunteers": "волонтерів",
   "filters": {
     "location": "Місце",
     "selectLocation": "Виберіть місце",
@@ -51,7 +68,19 @@
     "eventDate": "Дата події",
     "selectDate": "Виберіть дату",
     "showCompleted": "Показати завершені події",
-    "title": "Фільтри"
+    "title": "Фільтри",
+    "allStatuses": "Всі статуси",
+    "allCategories": "Всі категорії",
+    "search": "Пошук",
+    "searchPlaceholder": "Шукати події...",
+    "status": "Статус",
+    "category": "Категорія",
+    "city": "Місто",
+    "cityPlaceholder": "Фільтрувати за містом",
+    "fromDate": "З дати",
+    "toDate": "По дату",
+    "single": "фільтр",
+    "multiple": "фільтри"
   },
   "eventCreating": {
     "title": "Запит на волонтерську допомогу",
@@ -96,5 +125,25 @@
       "message": "Ваш запит на подію успішно надіслано та очікує на схвалення модераторами. Ви отримаєте сповіщення, коли вашу подію буде схвалено.",
       "viewEventsButton": "Переглянути всі події"
     }
+  },
+  "myEvents": {
+    "title": "Мої події",
+    "tabs": {
+      "created": "Створені мною",
+      "joined": "В яких я беру участь"
+    },
+    "noCreatedEvents": "Ви ще не створили жодної події",
+    "noJoinedEvents": "Ви ще не приєднались до жодної події"
+  },
+  "error": {
+    "fetchingData": "Помилка отримання даних подій",
+    "loadingApplicants": "Помилка завантаження заявок"
+  },
+  "button": {
+    "reset": "Скинути",
+    "apply": "Застосувати",
+    "retry": "Спробувати ще раз",
+    "accept": "Прийняти",
+    "reject": "Відхилити"
   }
 }

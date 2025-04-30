@@ -73,22 +73,7 @@ const EventCardSquare: FC<OfferCardSquareProps> = ({
   };
   
   const dateDisplay = getDateDisplay();
-  
-  const getCategoryColor = (category: string) => {
-    const colorMap: Record<string, "primary" | "secondary" | "success" | "error" | "info" | "warning"> = {
-      medical: "primary",
-      food: "success",
-      shelter: "secondary",
-      education: "info",
-      clothing: "warning",
-      transport: "error",
-      ecology: "primary",
-      animals: "secondary",
-      charity: "success",
-    };
-    
-    return colorMap[category.toLowerCase()] || "primary";
-  };
+
 
   return (
     <Box sx={styles.container}>

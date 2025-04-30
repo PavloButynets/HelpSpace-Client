@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { Avatar, Box, Button, Card, CardContent, Rating, Typography } from "@mui/material"
+import { UserService } from "~/services/user-service"
+import { useQuery } from "@tanstack/react-query"
 
 // Mock data for reviews
 const MOCK_REVIEWS = [
@@ -60,11 +62,26 @@ interface UserReviewsProps {
 export default function UserReviews({ userId }: UserReviewsProps) {
   const [visibleReviews, setVisibleReviews] = useState(3)
 
-  // In a real app, you would fetch reviews based on the userId
-  const reviews = MOCK_REVIEWS
-
+  const { data: feedbacks, isLoading, error } = useQuery({
+    queryKey: ["userFeedbacks", userId],
+    queryFn: async () => {
+      const response = await UserService.getUserFeedbacks(userId);
+      return response;
+    },
+    enabled: !!userId
+  });
+ 
+  if(isLoading) {
+    return <Typography>Loading...</Typography>
+  }
+  if (error) {
+    return <Typography color="error">Error loading reviews</Typography>
+  }
+  if (!feedbacks || feedbacks.length === 0) {
+    return <Typography>No reviews available</Typography>
+  }
   const showMoreReviews = () => {
-    setVisibleReviews(reviews.length)
+    setVisibleReviews(feedbacks.length)
   }
 
   return (
@@ -74,11 +91,11 @@ export default function UserReviews({ userId }: UserReviewsProps) {
       </Typography>
 
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 2 }}>
-        {reviews.slice(0, visibleReviews).map((review) => (
-          <Card key={review.id} variant="outlined">
+        {feedbacks.slice(0, visibleReviews).map((feedback) => (
+          <Card key={feedback.eventId} variant="outlined">
             <CardContent>
               <Box sx={{ display: "flex", gap: 2 }}>
-                <Avatar alt={review.author.name} src={review.author.avatar} />
+                <Avatar alt={`${feedback.author.firstName} ${feedback.author.lastName}`} src={feedback.author.photo} />
 
                 <Box sx={{ flex: 1 }}>
                   <Box
@@ -91,9 +108,9 @@ export default function UserReviews({ userId }: UserReviewsProps) {
                     }}
                   >
                     <Box>
-                      <Typography variant="subtitle1">{review.author.name}</Typography>
+                      <Typography variant="subtitle1">{`${feedback.author.firstName} ${feedback.author.lastName}`}</Typography>
                       <Typography color="text.secondary" variant="body2">
-                        Event: {review.eventTitle}
+                        Подія: {feedback.eventTitle}
                       </Typography>
                     </Box>
 
@@ -104,14 +121,14 @@ export default function UserReviews({ userId }: UserReviewsProps) {
                         mt: { xs: 1, sm: 0 },
                       }}
                     >
-                      <Rating readOnly size="small" value={review.rating} />
+                      <Rating readOnly size="small" value={feedback.stars} />
                       <Typography color="text.secondary" sx={{ ml: 1 }} variant="body2">
-                        {new Date(review.date).toLocaleDateString()}
+                        {new Date(feedback.joinedAt).toLocaleDateString()}
                       </Typography>
                     </Box>
                   </Box>
 
-                  <Typography variant="body2">{review.content}</Typography>
+                  <Typography variant="body2">{feedback.feedback}</Typography>
                 </Box>
               </Box>
             </CardContent>
@@ -119,7 +136,7 @@ export default function UserReviews({ userId }: UserReviewsProps) {
         ))}
       </Box>
 
-      {visibleReviews < reviews.length && (
+      {visibleReviews < feedbacks.length && (
         <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
           <Button onClick={showMoreReviews} variant="outlined">
             Show More Reviews

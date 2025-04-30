@@ -91,8 +91,6 @@ export default [
   },
   ...compat
     .extends(
-      'plugin:@typescript-eslint/recommended',
-      'plugin:@typescript-eslint/recommended-requiring-type-checking'
     )
     .map((config) => ({
       ...config,

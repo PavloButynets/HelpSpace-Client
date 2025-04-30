@@ -23,12 +23,12 @@ class ResponseError extends Error {
 
 export const baseService = {
   request: async <T = unknown>({
-                                 data,
-                                 headers,
-                                 method,
-                                 timeout,
-                                 url
-                               }: RequestParams): Promise<T> => {
+    data,
+    headers,
+    method,
+    timeout,
+    url
+  }: RequestParams): Promise<T> => {
     try {
       const response = await axiosClient.request<T>({
         data,
@@ -51,7 +51,11 @@ export const baseService = {
     }
   },
 
-  get: async <T = unknown>(url: string, headers?: RawAxiosRequestHeaders, timeout?: number): Promise<T> => {
+  get: async <T = unknown>(
+    url: string,
+    headers?: RawAxiosRequestHeaders,
+    timeout?: number
+  ): Promise<T> => {
     return baseService.request<T>({
       method: 'GET',
       url,
@@ -60,7 +64,12 @@ export const baseService = {
     })
   },
 
-  post: async <T = unknown>(url: string, data: unknown, headers?: RawAxiosRequestHeaders, timeout?: number): Promise<T> => {
+  post: async <T = unknown>(
+    url: string,
+    data: unknown,
+    headers?: RawAxiosRequestHeaders,
+    timeout?: number
+  ): Promise<T> => {
     return baseService.request<T>({
       method: 'POST',
       url,
@@ -70,7 +79,12 @@ export const baseService = {
     })
   },
 
-  patch: async <T = unknown>(url: string, data: unknown, headers?: RawAxiosRequestHeaders, timeout?: number): Promise<T> => {
+  patch: async <T = unknown>(
+    url: string,
+    data: unknown,
+    headers?: RawAxiosRequestHeaders,
+    timeout?: number
+  ): Promise<T> => {
     return baseService.request<T>({
       method: 'PATCH',
       url,
@@ -80,10 +94,28 @@ export const baseService = {
     })
   },
 
-  delete: async <T = unknown>(url: string, headers?: RawAxiosRequestHeaders, timeout?: number): Promise<T> => {
+  delete: async <T = unknown>(
+    url: string,
+    headers?: RawAxiosRequestHeaders,
+    timeout?: number
+  ): Promise<T> => {
     return baseService.request<T>({
       method: 'DELETE',
       url,
+      headers,
+      timeout
+    })
+  },
+  put: async <T = unknown>(
+    url: string,
+    data: unknown,
+    headers?: RawAxiosRequestHeaders,
+    timeout?: number
+  ): Promise<T> => {
+    return baseService.request<T>({
+      method: 'PUT',
+      url,
+      data,
       headers,
       timeout
     })

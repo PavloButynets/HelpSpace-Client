@@ -21,9 +21,11 @@ import UserReviews from "../../containers/user-profile/UserReviews"
 import UserStats from "../../containers/user-profile/UserStats"
 import UserEvents from "../../containers/user-profile/UserEvents"
 import UserBadges from "../../containers/user-profile/UserBadges"
+import { UserService } from "~/services/user-service"
+import { useQuery } from "@tanstack/react-query"
 
 // This would be replaced with your actual data fetching logic
-function getUser(id: string) {
+function getUser(id?: string) {
   // Simulate API call
   // In a real app, you would fetch this data from your backend
   return {
@@ -77,20 +79,36 @@ function a11yProps(index: number) {
 }
 
 export default function UserProfile() {
-  const { id } = useParams<{ id: string }>()
+  const { id } = useParams()
   const [tabValue, setTabValue] = useState(0)
-  const user = getUser(id || "default-id")
 
+  const { data: userData, isLoading, isError } = useQuery({
+    queryKey: ["user", id],
+    queryFn: async () => {
+
+      const response = await UserService.getUserById(id!);
+      return response;
+    },
+    enabled: !!id, 
+  });
+  console.log(userData?.created_at)
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
   }
 
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+  if (isError || !userData) {
+    return <div>Error loading user data</div>
+  }
   return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
         <Stack
+            alignItems="stretch"
             direction={{ xs: "column", md: "row" }}
             spacing={3}
-            alignItems="stretch"
         >
           {/* Left column - User info */}
           <Box sx={{ flex: 1 }}>
@@ -99,8 +117,8 @@ export default function UserProfile() {
                 <CardHeader
                     avatar={
                       <Avatar
-                          alt={user.name}
-                          src={user.avatar}
+                          alt={`${userData.first_name} ${userData.last_name}`}
+                          src={userData.photo || '/placeholder.svg'}
                           sx={{ width: 80, height: 80 }}
                       />
                     }
@@ -108,13 +126,13 @@ export default function UserProfile() {
                       <Box sx={{ display: "flex", alignItems: "center", mt: 0.5 }}>
                         <LocationOn fontSize="small" sx={{ mr: 0.5 }} />
                         <Typography color="text.secondary" variant="body2">
-                          {user.city}
+                          {userData.city}
                         </Typography>
                       </Box>
                     }
                     title={
                       <Typography component="h1" variant="h5">
-                        {user.name}
+                        {`${userData.first_name} ${userData.last_name}`}
                       </Typography>
                     }
                 />
@@ -126,10 +144,12 @@ export default function UserProfile() {
                         sx={{ mr: 0.5 }}
                         variant="body1"
                     >
-                      {user.rating}
+                      {userData.feedbacks?.length > 0 ? 
+      userData.feedbacks.reduce((sum: number, feedback: any) => sum + feedback.stars, 0) / userData.feedbacks.length : 
+      0}
                     </Typography>
                     <Typography color="text.secondary" variant="body2">
-                      ({user.reviewCount} reviews)
+                      ({userData?.feedbacks?.length ?? 0} reviews)
                     </Typography>
                   </Box>
 
@@ -138,7 +158,7 @@ export default function UserProfile() {
                       About
                     </Typography>
                     <Typography color="text.secondary" variant="body2">
-                      {user.bio}
+                      {userData.aboutUser}
                     </Typography>
                   </Box>
 
@@ -147,7 +167,7 @@ export default function UserProfile() {
                       Skills
                     </Typography>
                     <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                      {user.skills.map((skill) => (
+                      {getUser(id).skills.map((skill) => (
                           <Chip
                               key={skill}
                               label={skill}
@@ -159,7 +179,7 @@ export default function UserProfile() {
                   </Box>
 
                   <Box sx={{ display: "flex", flexDirection: "column", gap: 1, mt: 2 }}>
-                    <Button fullWidth startIcon={<Email />} color="primary" variant="contained">
+                    <Button color="primary" fullWidth startIcon={<Email />} variant="contained">
                       Send Message
                     </Button>
                     <Button fullWidth startIcon={<CalendarMonth />} variant="outlined">
@@ -177,7 +197,7 @@ export default function UserProfile() {
                       <AccessTime sx={{ mr: 1, color: "text.secondary" }} />
                       <Typography>Total Hours</Typography>
                     </Box>
-                    <Typography fontWeight="medium">{user.totalVolunteerHours}</Typography>
+                    <Typography fontWeight="medium">{userData.totalHoursWorked}</Typography>
                   </Box>
 
                   <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
@@ -185,7 +205,7 @@ export default function UserProfile() {
                       <CalendarMonth sx={{ mr: 1, color: "text.secondary" }} />
                       <Typography>Events Completed</Typography>
                     </Box>
-                    <Typography fontWeight="medium">{user.completedEvents}</Typography>
+                    <Typography fontWeight="medium">{userData.assignedEvents.length}</Typography>
                   </Box>
 
                   <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -194,13 +214,13 @@ export default function UserProfile() {
                       <Typography>Member Since</Typography>
                     </Box>
                     <Typography fontWeight="medium">
-                      {new Date(user.joinedDate).toLocaleDateString()}
+                      {new Date(userData.created_at).toLocaleDateString()}
                     </Typography>
                   </Box>
                 </CardContent>
               </Card>
 
-              <UserBadges badges={user.badges} />
+              <UserBadges badges={getUser(id).badges} />
             </Box>
           </Box>
 
@@ -221,15 +241,15 @@ export default function UserProfile() {
               </Box>
 
               <TabPanel index={0} value={tabValue}>
-                <UserReviews userId={user.id} />
+                <UserReviews userId={userData.id} />
               </TabPanel>
 
               <TabPanel index={1} value={tabValue}>
-                <UserStats userId={user.id} />
+                <UserStats userId={userData.id} />
               </TabPanel>
 
               <TabPanel index={2} value={tabValue}>
-                <UserEvents userId={user.id} />
+              <UserEvents events={{ created: userData.eventsCreated || [], participated: userData.assignedEvents }} />
               </TabPanel>
             </Card>
           </Box>
