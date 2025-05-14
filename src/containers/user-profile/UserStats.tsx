@@ -110,59 +110,6 @@ export default function UserStats({ userId }: UserStatsProps) {
             </Box>
           </CardContent>
         </Card>
-
-        <Card variant="outlined">
-          <CardHeader
-            subheader="Measurable outcomes from volunteer activities"
-            subheaderTypographyProps={{ variant: "body2" }}
-            title="Real-World Impact"
-            titleTypographyProps={{ variant: "h6" }}
-          />
-          <CardContent>
-            <Grid container spacing={2}>
-              <Stack direction="row" flexWrap="wrap" spacing={2}>
-                <Card sx={{ p: 2 }} variant="outlined">
-                  <Typography color="text.secondary" variant="body2">
-                    Trees Planted
-                  </Typography>
-                  <Typography fontWeight="bold" variant="h4">
-                    {stats.impact.treesPlanted}
-                  </Typography>
-                </Card>
-              </Stack>
-              <Stack direction="row" flexWrap="wrap" spacing={2}>
-                <Card sx={{ p: 2 }} variant="outlined">
-                  <Typography color="text.secondary" variant="body2">
-                    Meals Served
-                  </Typography>
-                  <Typography fontWeight="bold" variant="h4">
-                    {stats.impact.mealsServed}
-                  </Typography>
-                </Card>
-              </Stack>
-              <Stack direction="row" flexWrap="wrap" spacing={2}>
-                <Card sx={{ p: 2 }} variant="outlined">
-                  <Typography color="text.secondary" variant="body2">
-                    People Helped
-                  </Typography>
-                  <Typography fontWeight="bold" variant="h4">
-                    {stats.impact.peopleHelped}
-                  </Typography>
-                </Card>
-              </Stack>
-              <Stack direction="row" flexWrap="wrap" spacing={2}>
-                <Card sx={{ p: 2 }} variant="outlined">
-                  <Typography color="text.secondary" variant="body2">
-                    Waste Collected (kg)
-                  </Typography>
-                  <Typography fontWeight="bold" variant="h4">
-                    {stats.impact.wasteCollected}
-                  </Typography>
-                </Card>
-              </Stack>
-            </Grid>
-          </CardContent>
-        </Card>
       </Box>
     </Box>
   )

@@ -145,8 +145,8 @@ export default function UserProfile() {
                         variant="body1"
                     >
                       {userData.feedbacks?.length > 0 ? 
-      userData.feedbacks.reduce((sum: number, feedback: any) => sum + feedback.stars, 0) / userData.feedbacks.length : 
-      0}
+      (userData.feedbacks.reduce((sum: number, feedback: any) => sum + feedback.stars, 0) / userData.feedbacks.length).toFixed(2) : 0}
+      
                     </Typography>
                     <Typography color="text.secondary" variant="body2">
                       ({userData?.feedbacks?.length ?? 0} reviews)

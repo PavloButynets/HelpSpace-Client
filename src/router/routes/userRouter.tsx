@@ -39,5 +39,6 @@ export const userRouter = (
         element={<MyEvents/>}
         path={userRoutes.events.myEvents.route}
         />
+
     </Route>
 )

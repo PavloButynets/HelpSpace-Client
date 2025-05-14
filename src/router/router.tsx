@@ -16,6 +16,7 @@ import {home} from "~/router/constants/crumbs";
 import {guestRouter} from "~/router/routes/guestRouter";
 import {authRoutes} from "~/router/constants/authRoutes";
 import {userRouter} from "~/router/routes/userRouter";
+import NotFound from "~/pages/error/NotFound";
 
 const HomeRoute = lazy(() => import("~/router/helpers/HomeRoute"));
 const Logout = lazy(() => import("~/pages/logout/Logout"));
@@ -27,6 +28,8 @@ export const routerConfig = (
             <Route element={<HomeRoute/>} path={guestRoutes.welcome.route}/>
             {userRouter}
             <Route element={<Logout/>} path={authRoutes.accountMenu.logout.route}/>
+                        <Route element={<NotFound/>} path="*" />
+
         </Route>
     </Route>
 );

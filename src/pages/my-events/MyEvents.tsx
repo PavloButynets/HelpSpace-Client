@@ -699,8 +699,6 @@ export default function MyEventsPage() {
                       {/* Кнопка для відображення заявок */}
                       <Button
                         onClick={() => showEventAssignments(event.id)}
-                        variant='text'
-                        sx={styles.showApplicantsButton}
                         startIcon={
                           selectedEventId === event.id ? (
                             <ExpandLess />
@@ -708,6 +706,8 @@ export default function MyEventsPage() {
                             <ExpandMore />
                           )
                         }
+                        sx={styles.showApplicantsButton}
+                        variant='text'
                       >
                         {selectedEventId === event.id
                           ? t('event.hideApplicants') || 'Hide applicants'
@@ -720,11 +720,11 @@ export default function MyEventsPage() {
                           <Divider sx={{ my: 2 }} />
 
                           {loadingAssignments ? (
-                            <Box textAlign='center' py={2}>
+                            <Box py={2} textAlign='center'>
                               <CircularProgress size={24} />
                             </Box>
                           ) : errorAssignments ? (
-                            <Typography color='error' textAlign='center' py={2}>
+                            <Typography color='error' py={2} textAlign='center'>
                               {t('error.loadingApplicants') ||
                                 'Error loading applicants'}
                             </Typography>
@@ -815,8 +815,8 @@ export default function MyEventsPage() {
                                     a.status === EventAssignmentStatus.PENDING
                                 ).length === 0 && (
                                   <Typography
-                                    textAlign='center'
                                     color='text.secondary'
+                                    textAlign='center'
                                   >
                                     {t('event.noPendingApplicants') ||
                                       'No pending applications'}
@@ -827,8 +827,8 @@ export default function MyEventsPage() {
                           ) : (
                             <Typography
                               color='text.secondary'
-                              textAlign='center'
                               py={2}
+                              textAlign='center'
                             >
                               {t('event.noApplicants') || 'No applicants yet'}
                             </Typography>
@@ -859,7 +859,7 @@ export default function MyEventsPage() {
                         sx={{ mb: 2 }}
                         variant='body2'
                       >
-                        {event.description}
+                        {(new DOMParser().parseFromString(event.description, 'text/html').body.textContent || '').slice(0, 50)+'...'}
                       </Typography>
 
                       <Box sx={styles.categoriesContainer}>

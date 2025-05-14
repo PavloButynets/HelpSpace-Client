@@ -216,7 +216,8 @@ function EventCard({ event, showCreator }: EventCardProps) {
         </Box>
 
         <Typography color="text.secondary" sx={{ mb: 2 }} variant="body2">
-          {event.description}
+                                  {(new DOMParser().parseFromString(event.description, 'text/html').body.textContent || '').slice(0, 50)+'...'}
+
         </Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 1, mb: 2 }}>
