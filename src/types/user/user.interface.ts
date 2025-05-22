@@ -1,4 +1,4 @@
-import { UserRole } from "~/types";
+import { UserRole } from '~/types'
 import { SxProps } from '@mui/material'
 
 export interface UserResponse {
@@ -11,6 +11,10 @@ export interface UserResponse {
   lastLogin: string
   createdAt: string
   updatedAt: string
+  lastMessage: string
+  unread: number
+  lastActive: Date
+  isOnline: boolean
   bookmarkedEvents: string[]
 }
 
@@ -24,27 +28,26 @@ export interface UserProfileInfoSx {
   myInfo?: SxProps
 }
 
-
 export interface GoogleAuthParams {
-  token: string;
-  role?: UserRole;
+  token: string
+  role?: UserRole
 }
 export interface LoginParams {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 export interface LoginResponse {
-  accessToken: string;
+  accessToken: string
 }
 export interface SignupParams {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  role: UserRole;
+  firstName: string
+  lastName: string
+  email: string
+  password: string
+  confirmPassword: string
+  role: UserRole
 }
 export interface SignupResponse {
-  userId: string;
-  userEmail: string;
+  userId: string
+  userEmail: string
 }

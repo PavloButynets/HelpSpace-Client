@@ -21,53 +21,60 @@ import {
   IconButton,
   InputAdornment,
   Tabs,
-  Tab,
+  Tab
 } from '@mui/material'
-import { Search, Message, Star, AccessTime, CheckCircle, Cancel } from '@mui/icons-material'
+import {
+  Search,
+  Message,
+  Star,
+  AccessTime,
+  CheckCircle,
+  Cancel
+} from '@mui/icons-material'
 import { EventManagementService } from '~/services/event-management-service'
 
 const styles = {
   container: {
-    padding: '1rem',
+    padding: '1rem'
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '1.5rem',
+    marginBottom: '1.5rem'
   },
   searchField: {
-    width: '300px',
+    width: '300px'
   },
   tableContainer: {
     marginTop: '1rem',
-    marginBottom: '2rem',
+    marginBottom: '2rem'
   },
   statusChip: {
-    fontWeight: 500,
+    fontWeight: 500
   },
   volunteerInfo: {
     display: 'flex',
     alignItems: 'center',
-    gap: '0.75rem',
+    gap: '0.75rem'
   },
   avatar: {
     width: 32,
     height: 32,
     borderRadius: '50%',
-    objectFit: 'cover' as const,
+    objectFit: 'cover' as const
   },
   actionButton: {
     minWidth: '36px',
-    padding: '6px',
+    padding: '6px'
   },
   filterContainer: {
     display: 'flex',
     gap: '1rem',
-    marginBottom: '1rem',
+    marginBottom: '1rem'
   },
   ratingDialog: {
-    width: '400px',
+    width: '400px'
   },
   hoursBadge: {
     display: 'flex',
@@ -76,8 +83,8 @@ const styles = {
     background: '#f0f7ff',
     borderRadius: '16px',
     padding: '4px 10px',
-    fontWeight: 500,
-  },
+    fontWeight: 500
+  }
 }
 
 interface EventVolunteerManagementProps {
@@ -98,7 +105,10 @@ const getStatusColor = (status: string) => {
   }
 }
 
-const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagementProps) => {
+const EventVolunteerManagement = ({
+  eventId,
+  isAuthor
+}: EventVolunteerManagementProps) => {
   const [volunteers, setVolunteers] = useState<any[]>([])
   const [filteredVolunteers, setFilteredVolunteers] = useState<any[]>([])
   const [search, setSearch] = useState('')
@@ -127,16 +137,17 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
         setLoading(false)
       }
     }
-    
+
     fetchData()
   }, [eventId])
 
   useEffect(() => {
     setFilteredVolunteers(
-      volunteers.filter(volunteer => 
-        volunteer.firstName.toLowerCase().includes(search.toLowerCase()) ||
-        volunteer.lastName.toLowerCase().includes(search.toLowerCase()) ||
-        volunteer.email.toLowerCase().includes(search.toLowerCase())
+      volunteers.filter(
+        (volunteer) =>
+          volunteer.firstName.toLowerCase().includes(search.toLowerCase()) ||
+          volunteer.lastName.toLowerCase().includes(search.toLowerCase()) ||
+          volunteer.email.toLowerCase().includes(search.toLowerCase())
       )
     )
   }, [search, volunteers])
@@ -169,11 +180,11 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
       })
 
       // Update the volunteer in the list
-      setVolunteers(volunteers.map(vol => 
-        vol.id === selectedVolunteer.id 
-          ? { ...vol, rating, feedback } 
-          : vol
-      ))
+      setVolunteers(
+        volunteers.map((vol) =>
+          vol.id === selectedVolunteer.id ? { ...vol, rating, feedback } : vol
+        )
+      )
 
       handleCloseFeedback()
     } catch (error) {
@@ -188,18 +199,18 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
   const handleApproveHours = async (hoursId: string) => {
     try {
       await EventManagementService.approveLoggedHours(hoursId)
-      
+
       // Update the hours in the list
-      setHours(hours.map(hour => 
-        hour.id === hoursId 
-          ? { ...hour, status: 'APPROVED' } 
-          : hour
-      ))
-      setFilteredHours(filteredHours.map(hour => 
-        hour.id === hoursId 
-          ? { ...hour, status: 'APPROVED' } 
-          : hour
-      ))
+      setHours(
+        hours.map((hour) =>
+          hour.id === hoursId ? { ...hour, status: 'APPROVED' } : hour
+        )
+      )
+      setFilteredHours(
+        filteredHours.map((hour) =>
+          hour.id === hoursId ? { ...hour, status: 'APPROVED' } : hour
+        )
+      )
     } catch (error) {
       console.error('Error approving hours:', error)
     }
@@ -208,18 +219,18 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
   const handleRejectHours = async (hoursId: string) => {
     try {
       await EventManagementService.rejectLoggedHours(hoursId)
-      
+
       // Update the hours in the list
-      setHours(hours.map(hour => 
-        hour.id === hoursId 
-          ? { ...hour, status: 'REJECTED' } 
-          : hour
-      ))
-      setFilteredHours(filteredHours.map(hour => 
-        hour.id === hoursId 
-          ? { ...hour, status: 'REJECTED' } 
-          : hour
-      ))
+      setHours(
+        hours.map((hour) =>
+          hour.id === hoursId ? { ...hour, status: 'REJECTED' } : hour
+        )
+      )
+      setFilteredHours(
+        filteredHours.map((hour) =>
+          hour.id === hoursId ? { ...hour, status: 'REJECTED' } : hour
+        )
+      )
     } catch (error) {
       console.error('Error rejecting hours:', error)
     }
@@ -228,27 +239,27 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
   return (
     <Box sx={styles.container}>
       <Box sx={styles.header}>
-        <Typography variant="h5">Volunteer Management</Typography>
+        <Typography variant='h5'>Волонтери</Typography>
         <TextField
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
+              <InputAdornment position='start'>
                 <Search />
               </InputAdornment>
-            ),
+            )
           }}
           onChange={handleSearchChange}
-          placeholder="Search volunteers..."
-          size="small"
+          placeholder='Знайти волонтерів...'
+          size='small'
           sx={styles.searchField}
           value={search}
-          variant="outlined"
+          variant='outlined'
         />
       </Box>
 
       <Tabs onChange={handleTabChange} sx={{ mb: 2 }} value={tabValue}>
-        <Tab label="Volunteers" />
-        <Tab label="Hours Approval" />
+        <Tab label='Волонтери' />
+        <Tab label='Підвердження годин' />
       </Tabs>
 
       {tabValue === 0 && (
@@ -256,12 +267,12 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Volunteer</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Hours Logged</TableCell>
-                <TableCell>Joined</TableCell>
-                <TableCell>Rating</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell>Волонтер</TableCell>
+                <TableCell>Статус</TableCell>
+                <TableCell>Зареєстровані години</TableCell>
+                <TableCell>Долучився</TableCell>
+                <TableCell>Рейтинг</TableCell>
+                <TableCell>Дії</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -269,57 +280,59 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
                 <TableRow key={volunteer.id}>
                   <TableCell>
                     <Box sx={styles.volunteerInfo}>
-                      <img 
-                        alt={`${volunteer.firstName} ${volunteer.lastName}`} 
-                        src={volunteer.photo} 
-                        style={styles.avatar} 
+                      <img
+                        alt={`${volunteer.firstName} ${volunteer.lastName}`}
+                        src={volunteer.photo}
+                        style={styles.avatar}
                       />
                       <Box>
-                        <Typography variant="body1">
+                        <Typography variant='body1'>
                           {volunteer.firstName} {volunteer.lastName}
                         </Typography>
-                        <Typography color="textSecondary" variant="body2">
+                        <Typography color='textSecondary' variant='body2'>
                           {volunteer.email}
                         </Typography>
                       </Box>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    <Chip 
-                      color={getStatusColor(volunteer.status) as any} 
-                      label={volunteer.status} 
-                      size="small" 
-                      sx={styles.statusChip} 
+                    <Chip
+                      color={getStatusColor(volunteer.status) as any}
+                      label={volunteer.status}
+                      size='small'
+                      sx={styles.statusChip}
                     />
                   </TableCell>
                   <TableCell>
                     <Box sx={styles.hoursBadge}>
-                      <AccessTime fontSize="small" />
-                      <Typography>{volunteer.hoursApproved}/{volunteer.hoursLogged}h</Typography>
+                      <AccessTime fontSize='small' />
+                      <Typography>
+                        {volunteer.hoursApproved}/{volunteer.hoursLogged}h
+                      </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
                     {new Date(volunteer.joinedDate).toLocaleDateString()}
                   </TableCell>
                   <TableCell>
-                    <Rating 
-                      precision={0.5} 
-                      readOnly 
-                      size="small" 
+                    <Rating
+                      precision={0.5}
+                      readOnly
+                      size='small'
                       value={volunteer.rating}
                     />
                   </TableCell>
                   <TableCell>
                     <Box sx={{ display: 'flex', gap: '0.5rem' }}>
-                      <IconButton 
-                        color="primary" 
-                        onClick={() => handleOpenFeedback(volunteer)} 
-                        size="small"
+                      <IconButton
+                        color='primary'
+                        onClick={() => handleOpenFeedback(volunteer)}
+                        size='small'
                       >
-                        <Star fontSize="small" />
+                        <Star fontSize='small' />
                       </IconButton>
-                      <IconButton color="primary" size="small">
-                        <Message fontSize="small" />
+                      <IconButton color='primary' size='small'>
+                        <Message fontSize='small' />
                       </IconButton>
                     </Box>
                   </TableCell>
@@ -349,43 +362,64 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
                   <TableRow key={hour.id}>
                     <TableCell>
                       <Box sx={styles.volunteerInfo}>
-                        <img alt={hour.volunteerName} src={hour.volunteerPhoto || "/placeholder.svg"} style={styles.avatar} />
+                        <img
+                          alt={hour.volunteerName}
+                          src={hour.volunteerPhoto || '/placeholder.svg'}
+                          style={styles.avatar}
+                        />
                         <Typography>{hour.volunteerName}</Typography>
                       </Box>
                     </TableCell>
-                    <TableCell>{new Date(hour.date).toLocaleDateString()}</TableCell>
+                    <TableCell>
+                      {new Date(hour.date).toLocaleDateString()}
+                    </TableCell>
                     <TableCell>
                       <Box sx={styles.hoursBadge}>
-                        <AccessTime fontSize="small" />
+                        <AccessTime fontSize='small' />
                         <Typography>{hour.hoursLogged}h</Typography>
                       </Box>
                     </TableCell>
                     <TableCell>
-                      <Chip color={getStatusColor(hour.status)} label={hour.status} size="small" sx={styles.statusChip} />
+                      <Chip
+                        color={getStatusColor(hour.status)}
+                        label={hour.status}
+                        size='small'
+                        sx={styles.statusChip}
+                      />
                     </TableCell>
                     <TableCell>
-                      {volunteers.find(v => v.id === hour.volunteerId)?.rating ? (
-                        <Rating readOnly size="small" value={volunteers.find(v => v.id === hour.volunteerId)?.rating} />
+                      {volunteers.find((v) => v.id === hour.volunteerId)
+                        ?.rating ? (
+                        <Rating
+                          readOnly
+                          size='small'
+                          value={
+                            volunteers.find((v) => v.id === hour.volunteerId)
+                              ?.rating
+                          }
+                        />
                       ) : (
-                        <Typography color="textSecondary" variant="body2">Not rated</Typography>
+                        <Typography color='textSecondary' variant='body2'>
+                          Not rated
+                        </Typography>
                       )}
                     </TableCell>
                     <TableCell>
                       {hour.status === 'PENDING' && (
                         <Box sx={{ display: 'flex', gap: '0.5rem' }}>
-                          <IconButton 
-                            color="success" 
-                            onClick={() => handleApproveHours(hour.id)} 
-                            size="small"
+                          <IconButton
+                            color='success'
+                            onClick={() => handleApproveHours(hour.id)}
+                            size='small'
                           >
-                            <CheckCircle fontSize="small" />
+                            <CheckCircle fontSize='small' />
                           </IconButton>
-                          <IconButton 
-                            color="error" 
+                          <IconButton
+                            color='error'
                             onClick={() => handleRejectHours(hour.id)}
-                            size="small"
+                            size='small'
                           >
-                            <Cancel fontSize="small" />
+                            <Cancel fontSize='small' />
                           </IconButton>
                         </Box>
                       )}
@@ -394,8 +428,8 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
                 ))
               ) : (
                 <TableRow>
-                  <TableCell align="center" colSpan={6}>
-                    <Typography py={2} variant="body1">
+                  <TableCell align='center' colSpan={6}>
+                    <Typography py={2} variant='body1'>
                       No hours logged yet
                     </Typography>
                   </TableCell>
@@ -408,23 +442,26 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
 
       <Dialog onClose={handleCloseFeedback} open={feedbackOpen}>
         <DialogTitle>
-          Feedback for {selectedVolunteer?.firstName} {selectedVolunteer?.lastName}
+          Feedback for {selectedVolunteer?.firstName}{' '}
+          {selectedVolunteer?.lastName}
         </DialogTitle>
         <DialogContent sx={styles.ratingDialog}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, pt: 1 }}>
-            <Typography variant="subtitle1">Rating</Typography>
+            <Typography variant='subtitle1'>Rating</Typography>
             <Rating
               onChange={(_, newValue) => setRating(newValue)}
               precision={0.5}
-              size="large"
+              size='large'
               value={rating}
             />
-            <Typography sx={{ mt: 1 }} variant="subtitle1">Feedback</Typography>
+            <Typography sx={{ mt: 1 }} variant='subtitle1'>
+              Feedback
+            </Typography>
             <TextField
               fullWidth
               multiline
               onChange={(e) => setFeedback(e.target.value)}
-              placeholder="Provide feedback about this volunteer..."
+              placeholder='Provide feedback about this volunteer...'
               rows={4}
               value={feedback}
             />
@@ -432,11 +469,11 @@ const EventVolunteerManagement = ({ eventId, isAuthor }: EventVolunteerManagemen
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseFeedback}>Cancel</Button>
-          <Button 
-            color="primary" 
-            disabled={!rating} 
+          <Button
+            color='primary'
+            disabled={!rating}
             onClick={handleSubmitFeedback}
-            variant="contained"
+            variant='contained'
           >
             Submit Feedback
           </Button>

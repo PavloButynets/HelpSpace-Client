@@ -17,7 +17,10 @@ export const URLs = {
     update: '/users',
     delete: '/users/delete',
     activate: '/users/activate',
-    myProfile: '/users/myProfile'
+    myProfile: '/users/myProfile',
+
+    search: '/users/search',
+    onlineStatus: '/users/online-status'
   },
   events: {
     get: '/events',
@@ -32,5 +35,24 @@ export const URLs = {
   },
   location: {
     getCities: '/location/cities'
+  },
+  chat: {
+    conversations: {
+      getAll: '/conversations',
+      getById: '/conversations/:id',
+      createOrFind: '/conversations',
+      createGroup: '/conversations/group',
+      addUsers: '/conversations/group/:conversationId/users',
+      leave: '/conversations/group/:conversationId/leave',
+      unreadCounts: '/conversations/unread'
+    },
+    messages: {
+      getByConversation: '/messages/conversation/:conversationId',
+      send: '/messages',
+      sendWithAttachments: '/messages/attachments',
+      markAsRead: '/messages/read',
+      delete: '/messages/:id',
+      edit: '/messages/:id'
+    }
   }
 } as const
